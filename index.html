@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Huang Peiru | Official Artist Portfolio</title>
+    
+    <!-- Tailwind CSS with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Manrope:wght@200..800&family=Noto+Sans:wght@300..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <!-- React and Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2070df", // Override to requested primary
+                        "primary-muted": "#A05A52",
+                        "background-light": "#F8F7F5",
+                        "background-dark": "#111821",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#262524",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "Cormorant Garamond", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                        body: ["Noto Sans", "Lato", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "4px",
+                        "md": "0.375rem",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 20px; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .fade-in { animation: fadeIn 0.8s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark transition-colors duration-300">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Shared Components ---
+
+        const Navigation = () => {
+            const navigate = useNavigate();
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'}`}>
+                    <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
+                        <Link to="/" className="flex items-center gap-3">
+                            {/* 淺色模式 Logo */}
+                            <img 
+                                img src="work/cv/logo01.svg"
+                                alt="Logo" 
+                                className="h-8 md:h-10 w-auto object-contain dark:hidden"
+                                onError={(e) => { e.target.style.display = 'none'; }} 
+                            />
+                            {/* 深色模式 Logo */}
+                            <img 
+                                img src="work/cv/logo02.png" 
+                                alt="Logo" 
+                                className="h-8 md:h-10 w-auto object-contain hidden dark:block"
+                                onError={(e) => { e.target.style.display = 'none'; }} 
+                            />
+                            <h2 className="text-gray-900 dark:text-white text-xl font-bold tracking-tight">HUANG PEIRU</h2>
+                        </Link>
+                        <div className="hidden lg:flex items-center gap-8">
+                            <Link to="/gallery" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
+                            <Link to="/exhibitions" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
+                            <Link to="/about" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
+                            <Link to="/contact" className="bg-primary text-white px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20">Contact</Link>
+                            <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300">
+                                <span className="material-icons text-xl dark:hidden">dark_mode</span>
+                                <span className="material-icons text-xl hidden dark:block">light_mode</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+        const Footer = () => (
+            <footer className="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 py-12">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="text-center md:text-left">
+                        <p className="font-display text-xl font-bold text-gray-900 dark:text-white">HUANG PEIRU</p>
+                        <p className="text-xs text-gray-500 mt-2">© 2024 Huang Peiru Art. All rights reserved.</p>
+                    </div>
+                    <div className="flex space-x-6">             
+                        <Link to="/about" className="text-gray-400 hover:text-primary">About</Link>
+                        <Link to="/contact" className="text-gray-400 hover:text-primary">Email</Link>
+                         <a href="http://admin.bigblackbag.net/web/default.asp?WebsiteID=62308&fbclid=IwY2xjawKvtQhleHRuA2FlbQIxMQBicmlkETE1NUZHQXFlTVFZZzZmV2I3AR54ft6fXgtxCiBaT_4urvitlclSYFiTudJqyh7IqCwDhKPQk_YsZ45kRRMNaw_aem_64fVNvdUqdfY2Wz1dGP5zg" target="_blank" className="text-gray-400 hover:text-primary">Blog</a>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Page Components ---
+
+        const HomePage = () => (
+            <div className="relative">
+                <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <img alt="Background" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfgmAt7L-_vghNECufeMXK9uDx780fKS2JF4qkdGfbaO5tcYlAvgeI0Q8zhC6555ehHAP75Wt_00sXwQcD7wXa-BJEocdlWrrAaT5BKLv2F157fvEQvGyf_ptUrF00SZ3t6X-SvL6ASZowKLf7TKlksXeyQCfi57U9AFIMA-rIEHOs97EdwmI7b2U7889IlNKwtIr8kMf10UDq8WSR6AscrJmYQsw9ANQntk4cbQO-uiETJCdsk9piCyrY-YNjl9O3gWR76m0P8MM"/>
+                        <div className="absolute inset-0 bg-black/30"></div>
+                    </div>
+                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                        <div className="glass-panel p-10 md:p-16 rounded-xl animate-fade-in">
+                            <h1 className="font-display text-5xl md:text-8xl text-white font-light tracking-tight mb-4">Huang Peiru</h1>
+                            <div className="w-24 h-1 bg-white/70 mx-auto my-6 rounded-full"></div>
+                            <h2 className="font-body text-lg text-white/90 font-light tracking-[0.2em] uppercase">Abstract Reflections & Textures</h2>
+                            <div className="mt-10">
+                                <Link to="/gallery" className="inline-block border border-white text-white px-8 py-3 rounded-sm hover:bg-white hover:text-gray-900 transition-all duration-300 uppercase tracking-widest text-sm font-medium">View Collection</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section className="py-24 bg-white dark:bg-background-dark">
+                    <div className="max-w-3xl mx-auto px-6 text-center">
+                        <span className="text-primary text-sm font-bold tracking-widest uppercase mb-4 block">Artist Statement</span>
+                        <h2 className="font-display text-4xl text-gray-900 dark:text-white mb-8 italic">"Capturing the chaotic serenity of the mind through layers of texture."</h2>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-light">
+                            My work explores the intersection of structure and fluidity. Using heavy impasto techniques and delicate glazing, I build surfaces that invite touch and contemplation. Each piece is a dialogue between the rigid grid of modern life and the organic flow of human emotion.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        );
+
+        const GalleryPage = () => (
+            <div className="pt-24 min-h-screen">
+                <header className="py-16 text-center">
+                    <div className="max-w-4xl mx-auto px-4">
+                        <h2 className="font-display text-4xl md:text-6xl text-gray-800 dark:text-white mb-6 fade-in">Selected Works</h2>
+                        <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light fade-in">
+                            Exploring the delicate balance between chaos and serenity through textured strokes and muted palettes.
+                        </p>
+                    </div>
+                </header>
+
+                <div className="sticky top-16 z-40 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md py-4 border-b border-gray-100 dark:border-gray-800">
+                    <div className="max-w-7xl mx-auto px-4 overflow-x-auto">
+                        <div className="flex justify-center space-x-8 min-w-max">
+                            {['All Works', 'Oil Paintings', 'Watercolor', 'Abstract', 'Sketches'].map((cat, i) => (
+                                <button key={i} className={`text-sm uppercase tracking-wider px-3 py-1 ${i === 0 ? 'text-primary border-b-2 border-primary' : 'text-gray-500'}`}>{cat}</button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <main className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                        {[
+                            { title: "Notes on water traces No. 1", price: "$1,3000", year: "2024", img: "work/2024w/0141x32x2cm2024.png", link: "/work/1" },
+                            { title: "Notes on water traces No. 4", price: "$1,3000", year: "2024", img: "work/2024w/0441x32x2cm2024.png", link: "#" },
+                            { title: "Notes on water traces No. 5", price: "$1,3000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "#" },
+                            { title: "Notes on water traces No. 11", price: "$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png", link: "#" },
+                            { title: "Notes on water traces No. 6", price: "1,3000", year: "2024", img: "work/2024w/0641x32x2cm2024.png", link: "#" },
+                            { title: "Notes on water traces No. 7", price: "$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "#" },
+                        ].map((item, idx) => (
+                            <Link to={item.link} key={idx} className="group flex flex-col">
+                                <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-sm">
+                                    <img src={item.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={item.title}/>
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                        <span className="bg-white px-6 py-2 text-xs uppercase tracking-widest font-bold">View Detail</span>
+                                    </div>
+                                </div>
+                                <div className="mt-4 flex justify-between items-start">
+                                    <div>
+                                        <h4 className="font-display text-xl text-gray-900 dark:text-white group-hover:text-primary transition-colors">{item.title}</h4>
+                                        <p className="text-sm text-gray-500">{item.year}</p>
+                                    </div>
+                                    <span className={`text-sm font-bold ${item.price === 'Sold' ? 'text-gray-400' : 'text-primary'}`}>{item.price}</span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </main>
+            </div>
+        );
+
+        const WorkDetailPage = () => (
+            <div className="pt-32 pb-20 max-w-7xl mx-auto px-6">
+                <div className="mb-8 text-xs tracking-widest uppercase text-gray-500">
+                    <Link to="/gallery" className="hover:underline">Portfolio</Link> <span className="mx-2">/</span>
+                    <span className="text-gray-900 dark:text-gray-200">Untitled Series No. 3</span>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div className="lg:col-span-7 space-y-6">
+                        <img src="work/2024w/0141x32x2cm2024.png" className="w-full rounded shadow-sm" alt="Full view"/>
+                        <div className="grid grid-cols-3 gap-4">
+                            {[
+                                "work/2024w/01-1.jpg",
+                                "work/2024w/01-2.png",
+                                "work/2024w/01-3.png"
+                            ].map((s, i) => <img key={i} src={s} className="aspect-square object-cover rounded cursor-pointer hover:opacity-80 transition-opacity" />)}
+                        </div>
+                    </div>
+                    <div className="lg:col-span-5">
+                        <header className="border-b border-gray-100 dark:border-gray-800 pb-8 mb-8">
+                            <h1 className="font-display text-4xl font-light text-gray-900 dark:text-white mb-2">方框上的水紋-1</h1>
+                            <p className="font-display italic text-xl text-gray-500">2023</p>
+                            <div className="flex justify-between mt-6">
+                                <div><p className="text-xs uppercase text-gray-400">Medium</p><p className="font-medium">壓克力彩、畫布</p></div>
+                                <div className="text-right"><p className="text-xs uppercase text-gray-400">Dimensions</p><p className="font-medium">41 x 32 x 2 cm</p></div>
+                            </div>
+                        </header>
+                        <div className="flex items-center justify-between mb-10">
+                            <span className="font-display text-3xl text-gray-900 dark:text-white">$13,000</span>
+                            <Link to="/contact" className="bg-primary text-white px-8 py-3 rounded uppercase text-xs font-bold tracking-widest shadow-lg">Inquire</Link>
+                        </div>
+                        <div className="prose prose-slate dark:prose-invert max-w-none">
+                            <h3 className="font-display text-xl mb-4">Artist's Note</h3>
+                            <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">
+                                This piece explores the tension between chaos and structure. The heavy impasto layers represent the accumulation of memory, overlaid with a rigid grid.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const ExhibitionsPage = () => (
+            <div className="pt-24 min-h-screen">
+                <header className="py-20 text-center px-4">
+                    <h1 className="font-display text-5xl md:text-6xl text-gray-900 dark:text-white mb-4 font-light">Exhibitions & Events</h1>
+                    <p className="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">A chronicle of past showcases and upcoming gallery appearances featuring Huang Peiru.</p>
+                </header>
+                <section className="max-w-5xl mx-auto px-6 pb-24">
+                    <div className="flex items-center mb-12">
+                        <span className="h-px bg-primary w-12 mr-4"></span>
+                        <h2 className="text-xl uppercase tracking-widest font-display text-primary">Current & Upcoming</h2>
+                    </div>
+                    <div className="bg-white dark:bg-card-dark rounded shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden md:flex">
+                        <div className="md:w-1/3 h-64 md:h-auto">
+                            <img src="work/2024w/0141x32x2cm2024.png" className="w-full h-full object-cover"/>
+                        </div>
+                        <div className="p-8 md:w-2/3 flex flex-col justify-center">
+                            <div className="flex items-center space-x-2 text-primary mb-2">
+                                <span className="material-icons text-sm">calendar_today</span>
+                                <span className="text-sm font-medium uppercase">Aug 30 - Oct 26, 2024</span>
+                            </div>
+                            <h3 className="font-display text-3xl text-gray-900 dark:text-white mb-2">Notes on water traces</h3>
+                            <p className="text-lg text-gray-500 italic mb-4">Solo Exhibition</p>
+                            <div className="flex items-start space-x-2 text-gray-400 mb-6">
+                                <span className="material-icons text-sm mt-1">location_on</span>
+                                <span className="text-sm">
+當代一畫廊 A GALLERY<br/>光復南路22巷32號1F, 北市松山區</span>
+                            </div>
+                            <button className="inline-flex items-center text-sm uppercase tracking-widest text-primary border-b border-primary pb-1 w-fit">View Details</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        );
+
+        const AboutPage = () => (
+            <div className="pt-16 min-h-screen">
+                <main className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-64px)]">
+                    <div className="relative h-[60vh] lg:h-auto overflow-hidden">
+                        <img alt="Studio" className="w-full h-full object-cover" src="work/cv/1011.png"/>
+                        <div className="absolute bottom-8 left-8 right-8 z-20">
+                            <div className="bg-white/80 dark:bg-black/60 backdrop-blur-md p-6 max-w-sm rounded-sm">
+                                <p className="font-display italic text-lg text-gray-800 dark:text-white">"Art is not just about capturing a visual, but the emotion of the silence in between."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-center px-8 py-16 lg:px-20 bg-white dark:bg-background-dark">
+                        <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4">The Artist</span>
+                        <h1 className="font-display text-4xl lg:text-6xl text-gray-900 dark:text-white mb-8">Huang Peiru</h1>
+                        <div className="prose prose-lg dark:prose-invert font-body text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
+                            <p>Born in the misty mountains of Guansi, Hsinchu, and now residing in Taipei, he is a contemporary painter known for his tranquil exploration of color and materials.</p>
+                            <p>Her works bridge the gap between the charm of traditional Chinese ink painting and modern abstract expressionism.</p>
+                        </div>
+                        <div className="mb-12 border-l-4 border-primary pl-6 py-2 bg-gray-50 dark:bg-gray-800/50">
+                            <h3 className="font-display text-xl text-gray-900 dark:text-white mb-2">Philosophy</h3>
+                            <p className="text-gray-600 dark:text-gray-400 italic">"I seek the quietude in chaos. My palette is drawn from the muted tones of dawn and the deep resonance of dusk."</p>
+                        </div>
+                        <div className="flex gap-4">
+                            <Link to="/gallery" className="px-8 py-3 bg-primary text-white font-bold uppercase tracking-widest text-sm shadow-md">View Gallery</Link>
+                            <Link to="/contact" className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-bold uppercase tracking-widest text-sm">Contact Studio</Link>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        );
+
+ const ContactPage = () => {
+            const [status, setStatus] = React.useState(""); // 確保使用 React.useState
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+                setStatus("Sending...");
+                
+                // 這裡使用了您提供的 Formspree ID
+                const response = await fetch("https://formspree.io/f/xdaanzjk", {
+                    method: "POST",
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    setStatus("SUCCESS");
+                    form.reset();
+                } else {
+                    setStatus("ERROR");
+                }
+            };
+
+            return (
+                <div className="pt-32 pb-20 min-h-screen bg-background-light dark:bg-background-dark">
+                    <main className="max-w-4xl mx-auto px-6">
+                        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-xl p-8 md:p-12 shadow-sm border border-gray-100 dark:border-gray-800">
+                            <h1 className="text-3xl font-bold dark:text-white mb-8 text-center uppercase tracking-widest">Contact</h1>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                {/* 表單部分 */}
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <input name="name" required placeholder="Name" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg h-12 px-4 outline-none focus:ring-1 focus:ring-primary" />
+                                    <input type="email" name="email" required placeholder="Email" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg h-12 px-4 outline-none focus:ring-1 focus:ring-primary" />
+                                    <textarea name="message" required placeholder="Message" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg p-4 outline-none focus:ring-1 focus:ring-primary" rows="5"></textarea>
+                                    <button type="submit" disabled={status === "Sending..."} className="bg-primary text-white font-bold px-8 py-3 rounded-lg hover:bg-opacity-90 w-full disabled:bg-gray-400 transition-all uppercase tracking-widest text-sm">
+                                        {status === "Sending..." ? "Sending..." : "Send Inquiry"}
+                                    </button>
+                                    
+                                    {/* 狀態顯示 */}
+                                    {status === "SUCCESS" && <p className="text-green-600 font-bold mt-2 text-center text-sm">✓ Thank you! Message sent to peiju1011@gmail.com.</p>}
+                                    {status === "ERROR" && <p className="text-red-600 font-bold mt-2 text-center text-sm">✕ Oops! Please try again or email directly.</p>}
+                                </form>
+
+                                {/* 文字資訊部分 */}
+                                <div className="space-y-6 flex flex-col justify-center">
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">For exhibition availability, collection inquiries, or studio visits, please use the form or contact directly via email.</p>
+                                    <a href="mailto:peiju1011@gmail.com" className="text-primary hover:underline font-medium text-lg">peiju1011@gmail.com</a>
+                                    <p className="text-sm dark:text-white tracking-widest uppercase">New Taipei City, Taiwan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        // --- App Component ---
+
+        const App = () => {
+            const location = useLocation();
+
+            // Scroll to top on navigation
+            useEffect(() => {
+                window.scrollTo(0, 0);
+            }, [location.pathname]);
+
+            return (
+                <div className="flex flex-col min-h-screen">
+                    <Navigation />
+                    <div className="flex-grow">
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/gallery" element={<GalleryPage />} />
+                            <Route path="/work/:id" element={<WorkDetailPage />} />
+                            <Route path="/exhibitions" element={<ExhibitionsPage />} />
+                            <Route path="/about" element={<AboutPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
+                        </Routes>
+                    </div>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(
+            <MemoryRouter>
+                <App />
+            </MemoryRouter>
+        );
+    </script>
+</body>
+</html>
