@@ -95,11 +95,11 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* 核心容器：px-5 確保左右紅線距離起始點 */}
-            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3">
+            {/* px-5 設定全域左右邊距，確保所有元素（含按鈕與藍框）的右緣對齊 */}
+            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col gap-3">
                 
-                {/* 第一排：Logo、名字與亮暗按鈕齊中並排 */}
-                <div className="flex items-center justify-center w-full gap-4 relative">
+                {/* 第一排：Logo/名字 靠左，亮暗按鈕 靠右，達成齊頭並排 */}
+                <div className="flex items-center justify-between w-full">
                     <Link to="/" className="flex items-center gap-2">
                         <img src="work/cv/logo01.svg" alt="Logo" className="h-5 md:h-10 w-auto dark:hidden" />
                         <img src="work/cv/logo02.png" alt="Logo" className="h-5 md:h-10 w-auto hidden dark:block" />
@@ -108,7 +108,7 @@ const Navigation = () => {
                         </h2>
                     </Link>
                     
-                    {/* 亮暗模式按鈕：與名字齊中並排 */}
+                    {/* 亮暗模式按鈕：透過 justify-between 自動推至最右側 */}
                     <button 
                         onClick={() => document.documentElement.classList.toggle('dark')} 
                         className="text-gray-600 dark:text-gray-300 flex items-center p-1"
@@ -119,21 +119,19 @@ const Navigation = () => {
                     </button>
                 </div>
 
-                {/* 第二排：純選單文字 - 兩條紅線等寬邏輯 */}
-                <div className="flex items-center justify-center w-full">
-                    {/* gap-5 確保 WORKS 到 EXHIBITIONS 的距離，與 ABOUT 到 CONTACT 藍框距離完全一樣 */}
-                    <div className="flex items-center gap-5 md:gap-8">
+                {/* 第二排：等距選單文字 */}
+                <div className="flex items-center justify-between w-full">
+                    {/* 左側選單：利用 gap-5 確保紅線等距 */}
+                    <div className="flex items-center gap-5">
                         <Link to="/gallery" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Works</Link>
                         <Link to="/exhibitions" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Exhibitions</Link>
                         <Link to="/about" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">About</Link>
-                        
-                        {/* Contact 藍色按鈕 - 字體 text-[11px] 與 About 相同
-                            透過 gap-5，About 與此藍框的物理距離會與左側紅線寬度達成 1:1 
-                        */}
-                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0">
-                            Contact
-                        </Link>
                     </div>
+                    
+                    {/* Contact 藍色按鈕：靠右對齊，其右緣將與上方的亮暗按鈕齊平 */}
+                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0">
+                        Contact
+                    </Link>
                 </div>
             </div>
         </nav>
@@ -441,6 +439,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
