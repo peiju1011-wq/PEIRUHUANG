@@ -82,7 +82,7 @@
 
         // --- Shared Components ---
 
-       const Navigation = () => {
+      const Navigation = () => {
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -94,36 +94,20 @@
 
     return (
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'}`}>
-            <div className="max-w-7xl mx-auto px-4 lg:px-10 h-full flex items-center justify-between">
-                {/* Logo 區域 */}
-                <Link to="/" className="flex items-center gap-2">
-                    <img 
-                        src="work/cv/logo01.svg" 
-                        alt="Logo" 
-                        className="h-6 md:h-10 w-auto object-contain dark:hidden"
-                        onError={(e) => { e.target.style.display = 'none'; }} 
-                    />
-                    <img 
-                        src="work/cv/logo02.png" 
-                        alt="Logo" 
-                        className="h-6 md:h-10 w-auto object-contain hidden dark:block"
-                        onError={(e) => { e.target.style.display = 'none'; }} 
-                    />
-                    <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight">HUANG PEIRU</h2>
+            <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+                <Link to="/" className="flex items-center gap-2 shrink-0">
+                    <img src="work/cv/logo01.svg" alt="Logo" className="h-6 md:h-10 w-auto dark:hidden" />
+                    <img src="work/cv/logo02.png" alt="Logo" className="h-6 md:h-10 w-auto hidden dark:block" />
+                    <h2 className="text-gray-900 dark:text-white text-sm md:text-xl font-bold">HUANG PEIRU</h2>
                 </Link>
 
-                {/* 選單與亮暗模式按鈕 (RWD 修正：手機端使用 flex 保持顯示) */}
-                <div className="flex items-center gap-3 md:gap-8">
-                    <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
-                    <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
-                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 shadow-lg shadow-primary/20">Contact</Link>
-                    
-                    {/* 亮暗模式切換按鈕：手機與網頁通用 */}
-                    <button 
-                        onClick={() => document.documentElement.classList.toggle('dark')} 
-                        className="text-gray-600 dark:text-gray-300 flex items-center p-1"
-                        aria-label="Toggle Dark Mode"
-                    >
+                {/* 核心修正：使用 flex-wrap 允許換行，並縮小手機版間距 */}
+                <div className="flex items-center gap-2 md:gap-8 overflow-x-auto no-scrollbar">
+                    <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Works</Link>
+                    <Link to="/exhibitions" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Exhibitions</Link>
+                    <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">About</Link>
+                    <Link to="/contact" className="bg-primary text-white px-2 py-1 md:px-4 md:py-2 rounded-md text-[10px] md:text-xs font-bold whitespace-nowrap">Contact</Link>
+                    <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 shrink-0">
                         <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
                         <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
                     </button>
@@ -434,3 +418,4 @@
 </body>
 
 </html>
+
