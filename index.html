@@ -82,50 +82,56 @@
 
         // --- Shared Components ---
 
-        const Navigation = () => {
-            const navigate = useNavigate();
-            const [isScrolled, setIsScrolled] = useState(false);
+       const Navigation = () => {
+    const navigate = useNavigate();
+    const [isScrolled, setIsScrolled] = useState(false);
 
-            useEffect(() => {
-                const handleScroll = () => setIsScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+    useEffect(() => {
+        const handleScroll = () => setIsScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-            return (
-                <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'}`}>
-                    <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
-                        <Link to="/" className="flex items-center gap-3">
-                            {/* 淺色模式 Logo */}
-                            <img 
-                                img src="work/cv/logo01.svg"
-                                alt="Logo" 
-                                className="h-8 md:h-10 w-auto object-contain dark:hidden"
-                                onError={(e) => { e.target.style.display = 'none'; }} 
-                            />
-                            {/* 深色模式 Logo */}
-                            <img 
-                                img src="work/cv/logo02.png" 
-                                alt="Logo" 
-                                className="h-8 md:h-10 w-auto object-contain hidden dark:block"
-                                onError={(e) => { e.target.style.display = 'none'; }} 
-                            />
-                            <h2 className="text-gray-900 dark:text-white text-xl font-bold tracking-tight">HUANG PEIRU</h2>
-                        </Link>
-                        <div className="hidden lg:flex items-center gap-8">
-                            <Link to="/gallery" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
-                            <Link to="/exhibitions" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
-                            <Link to="/about" className="text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
-                            <Link to="/contact" className="bg-primary text-white px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20">Contact</Link>
-                            <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300">
-                                <span className="material-icons text-xl dark:hidden">dark_mode</span>
-                                <span className="material-icons text-xl hidden dark:block">light_mode</span>
-                            </button>
-                        </div>
-                    </div>
-                </nav>
-            );
-        };
+    return (
+        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'}`}>
+            <div className="max-w-7xl mx-auto px-4 lg:px-10 h-full flex items-center justify-between">
+                {/* Logo 區域 */}
+                <Link to="/" className="flex items-center gap-2">
+                    <img 
+                        src="work/cv/logo01.svg" 
+                        alt="Logo" 
+                        className="h-6 md:h-10 w-auto object-contain dark:hidden"
+                        onError={(e) => { e.target.style.display = 'none'; }} 
+                    />
+                    <img 
+                        src="work/cv/logo02.png" 
+                        alt="Logo" 
+                        className="h-6 md:h-10 w-auto object-contain hidden dark:block"
+                        onError={(e) => { e.target.style.display = 'none'; }} 
+                    />
+                    <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight">HUANG PEIRU</h2>
+                </Link>
+
+                {/* 選單與亮暗模式按鈕 (RWD 修正：手機端使用 flex 保持顯示) */}
+                <div className="flex items-center gap-3 md:gap-8">
+                    <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
+                    <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
+                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-opacity-90 shadow-lg shadow-primary/20">Contact</Link>
+                    
+                    {/* 亮暗模式切換按鈕：手機與網頁通用 */}
+                    <button 
+                        onClick={() => document.documentElement.classList.toggle('dark')} 
+                        className="text-gray-600 dark:text-gray-300 flex items-center p-1"
+                        aria-label="Toggle Dark Mode"
+                    >
+                        <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
+                        <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    );
+};
         const Footer = () => (
             <footer className="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 py-12">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -426,4 +432,5 @@
         );
     </script>
 </body>
+
 </html>
