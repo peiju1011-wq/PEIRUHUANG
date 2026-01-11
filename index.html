@@ -93,12 +93,12 @@ const Navigation = () => {
     }, []);
 
     return (
-        /* 將導航列高度從固定的 h-16/20 改為自動 h-auto，以容納兩排內容 */
-        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
-            <div className="max-w-7xl mx-auto px-4 py-3 lg:px-10 flex flex-wrap items-center justify-between">
+        /* 修改點：高度改為 h-auto 以容納多行內容，py-2 增加上下內距 */
+        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-2 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+            <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between">
                 
-                {/* 第一排：Logo 與 名字 (佔滿寬度以強迫換行) */}
-                <div className="flex items-center justify-between w-full mb-2 lg:mb-0 lg:w-auto">
+                {/* 第一排：Logo 與 名字 - 手機端佔滿 100% 寬度以強迫換行 */}
+                <div className="flex items-center justify-between w-full lg:w-auto mb-2 lg:mb-0">
                     <Link to="/" className="flex items-center gap-2">
                         <img 
                             src="work/cv/logo01.svg" 
@@ -116,21 +116,27 @@ const Navigation = () => {
                     </Link>
                 </div>
 
-                {/* 第二排：選單項目與亮暗模式切換 */}
-                <div className="flex items-center justify-center w-full gap-3 md:gap-8 lg:w-auto lg:justify-end">
-                    <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Works</Link>
-                    <Link to="/exhibitions" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Exhibitions</Link>
-                    <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">About</Link>
-                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase whitespace-nowrap">
-                        Contact
-                    </Link>
-                    <button 
-                        onClick={() => document.documentElement.classList.toggle('dark')} 
-                        className="text-gray-600 dark:text-gray-300 flex items-center p-1"
-                    >
-                        <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
-                        <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
-                    </button>
+                {/* 第二排：導覽連結與亮暗切換 - 手機端自動縮排至此 */}
+                <div className="flex items-center justify-between w-full lg:w-auto gap-1 md:gap-8">
+                    <div className="flex items-center gap-3 md:gap-6">
+                        <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Works</Link>
+                        <Link to="/exhibitions" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Exhibitions</Link>
+                        <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">About</Link>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase whitespace-nowrap shadow-sm">
+                            Contact
+                        </Link>
+                        {/* 亮暗模式切換按鈕 */}
+                        <button 
+                            onClick={() => document.documentElement.classList.toggle('dark')} 
+                            className="text-gray-600 dark:text-gray-300 p-1"
+                        >
+                            <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
+                            <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -438,6 +444,7 @@ const Navigation = () => {
 </body>
 
 </html>
+
 
 
 
