@@ -92,39 +92,39 @@ const Navigation = () => {
     }, []);
 
     return (
-        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
+        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-2 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* 使用 flex-col 讓 Logo 與選單在手機端垂直並列 */}
-            <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3">
+            {/* 使用 flex-col 確保在手機上垂直分層，避免水平擠壓 */}
+            <div className="max-w-7xl mx-auto px-2 flex flex-col items-center gap-2">
                 
-                {/* 第一排：Logo 與 名字 - 居中顯示 */}
+                {/* 第一排：Logo 與 名字 - 居中且縮小字體 */}
                 <div className="flex items-center justify-center w-full">
                     <Link to="/" className="flex items-center gap-2">
-                        <img src="work/cv/logo01.svg" alt="Logo" className="h-6 md:h-10 w-auto dark:hidden" />
-                        <img src="work/cv/logo02.png" alt="Logo" className="h-6 md:h-10 w-auto hidden dark:block" />
-                        <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight uppercase">
+                        <img src="work/cv/logo01.svg" alt="Logo" className="h-5 md:h-10 w-auto dark:hidden" />
+                        <img src="work/cv/logo02.png" alt="Logo" className="h-5 md:h-10 w-auto hidden dark:block" />
+                        <h2 className="text-gray-900 dark:text-white text-sm md:text-xl font-bold tracking-tight uppercase">
                             Huang Peiru
                         </h2>
                     </Link>
                 </div>
 
-                {/* 第二排：選項區塊 - 確保左右不裁切 */}
-                <div className="flex items-center justify-center w-full gap-4 md:gap-8">
-                    <div className="flex items-center justify-center gap-4">
-                        <Link to="/gallery" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
-                        <Link to="/exhibitions" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
-                        <Link to="/about" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
+                {/* 第二排：選項區塊 - 縮小字體 (text-[10px]) 並縮減間距 (gap-2) */}
+                <div className="flex items-center justify-center w-full gap-2 md:gap-8">
+                    <div className="flex items-center justify-center gap-3 md:gap-6">
+                        <Link to="/gallery" className="text-[10px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
+                        <Link to="/exhibitions" className="text-[10px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
+                        <Link to="/about" className="text-[10px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
                     </div>
                     
-                    <div className="flex items-center gap-2">
-                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[11px] md:text-xs font-bold uppercase shadow-sm">
+                    <div className="flex items-center gap-1.5">
+                        <Link to="/contact" className="bg-primary text-white px-2 py-1 md:px-5 md:py-2 rounded text-[10px] md:text-xs font-bold uppercase shadow-sm whitespace-nowrap">
                             Contact
                         </Link>
-                        {/* 亮暗模式按鈕 */}
+                        {/* 亮暗模式按鈕 - 縮小圖標以節省空間 */}
                         <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 p-1 flex items-center">
-                            <span className="material-icons text-xl dark:hidden">dark_mode</span>
-                            <span className="material-icons text-xl hidden dark:block">light_mode</span>
+                            <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
+                            <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
                         </button>
                     </div>
                 </div>
@@ -434,6 +434,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
