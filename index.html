@@ -95,23 +95,30 @@ const Navigation = () => {
     return (
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'}`}>
             <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-                {/* Logo 縮小一點點 */}
-                <Link to="/" className="flex items-center gap-1 md:gap-2 shrink-0">
-                    <img src="work/cv/logo01.svg" alt="Logo" className="h-5 md:h-10 w-auto dark:hidden" />
-                    <img src="work/cv/logo02.png" alt="Logo" className="h-5 md:h-10 w-auto hidden dark:block" />
-                    <h2 className="text-gray-900 dark:text-white text-sm md:text-xl font-bold tracking-tight">HUANG PEIRU</h2>
+                {/* 1. 修正標題：在手機端縮小字體 (text-sm)，桌機端恢復 (md:text-xl) */}
+                <Link to="/" className="flex items-center gap-2 shrink-0">
+                    <img src="work/cv/logo01.svg" alt="Logo" className="h-6 md:h-10 w-auto dark:hidden" />
+                    <img src="work/cv/logo02.png" alt="Logo" className="h-6 md:h-10 w-auto hidden dark:block" />
+                    <h2 className="text-gray-900 dark:text-white text-sm md:text-xl font-bold tracking-tighter md:tracking-tight whitespace-nowrap">
+                        HUANG PEIRU
+                    </h2>
                 </Link>
 
-                {/* 修改點：調整字體大小與間距，確保全部擠得進去 */}
-                <div className="flex items-center gap-2 md:gap-8">
-                    <Link to="/gallery" className="text-[9px] md:text-sm font-medium uppercase tracking-tighter md:tracking-widest text-gray-700 dark:text-gray-300">Works</Link>
-                    <Link to="/exhibitions" className="text-[9px] md:text-sm font-medium uppercase tracking-tighter md:tracking-widest text-gray-700 dark:text-gray-300">Exhibitions</Link>
-                    <Link to="/about" className="text-[9px] md:text-sm font-medium uppercase tracking-tighter md:tracking-widest text-gray-700 dark:text-gray-300">About</Link>
-                    <Link to="/contact" className="bg-primary text-white px-2 py-1 md:px-5 md:py-2 rounded-md text-[9px] md:text-xs font-bold uppercase shrink-0">Contact</Link>
+                {/* 2. 修正選單：手機端縮小間距與字體，確保 Exhibitions 不會消失 */}
+                <div className="flex items-center gap-2 md:gap-8 ml-2">
+                    <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Works</Link>
+                    <Link to="/exhibitions" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Exhibitions</Link>
+                    <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">About</Link>
                     
-                    <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300">
-                        <span className="material-icons text-base md:text-xl dark:hidden">dark_mode</span>
-                        <span className="material-icons text-base md:text-xl hidden dark:block">light_mode</span>
+                    {/* 聯絡按鈕：手機端縮小內距 */}
+                    <Link to="/contact" className="bg-primary text-white px-2 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase whitespace-nowrap">
+                        Contact
+                    </Link>
+
+                    {/* 亮暗模式按鈕 */}
+                    <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 shrink-0">
+                        <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
+                        <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
                     </button>
                 </div>
             </div>
@@ -420,6 +427,7 @@ const Navigation = () => {
 </body>
 
 </html>
+
 
 
 
