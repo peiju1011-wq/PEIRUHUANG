@@ -95,9 +95,10 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
+            {/* 使用 flex-col 讓 Logo 與選單在手機端垂直並列 */}
             <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3">
                 
-                {/* 第一排：Logo 與 名字 - 始終置中 */}
+                {/* 第一排：Logo 與 名字 - 居中顯示 */}
                 <div className="flex items-center justify-center w-full">
                     <Link to="/" className="flex items-center gap-2">
                         <img src="work/cv/logo01.svg" alt="Logo" className="h-6 md:h-10 w-auto dark:hidden" />
@@ -108,18 +109,19 @@ const Navigation = () => {
                     </Link>
                 </div>
 
-                {/* 第二排：選項區塊 - 手機端置中排列，加入 hover 效果 */}
-                <div className="flex items-center justify-center w-full gap-3 md:gap-8">
-                    <div className="flex items-center justify-center gap-4 md:gap-8">
-                        <Link to="/gallery" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-1">Works</Link>
-                        <Link to="/exhibitions" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-1">Exhibitions</Link>
-                        <Link to="/about" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-1">About</Link>
+                {/* 第二排：選項區塊 - 確保左右不裁切 */}
+                <div className="flex items-center justify-center w-full gap-4 md:gap-8">
+                    <div className="flex items-center justify-center gap-4">
+                        <Link to="/gallery" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
+                        <Link to="/exhibitions" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
+                        <Link to="/about" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
                     </div>
                     
                     <div className="flex items-center gap-2">
-                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[11px] md:text-xs font-bold uppercase hover:bg-opacity-80 transition-all shadow-sm">
+                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[11px] md:text-xs font-bold uppercase shadow-sm">
                             Contact
                         </Link>
+                        {/* 亮暗模式按鈕 */}
                         <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 p-1 flex items-center">
                             <span className="material-icons text-xl dark:hidden">dark_mode</span>
                             <span className="material-icons text-xl hidden dark:block">light_mode</span>
@@ -396,7 +398,7 @@ const Navigation = () => {
 
         // --- App Component ---
 
-        const App = () => {
+const App = () => {
     const location = useLocation();
 
     useEffect(() => {
@@ -406,7 +408,7 @@ const Navigation = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Navigation />
-            {/* 修正點：增加 pt-32 (手機) 到 pt-24 (桌機) 的推擠距離，避免內容被 Nav 遮擋 */}
+            {/* 修正點：pt-[120px] 確保手機端內容避開導覽列，md:pt-24 為桌機版 */}
             <div className="flex-grow pt-[120px] md:pt-24"> 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
@@ -432,6 +434,7 @@ const Navigation = () => {
 </body>
 
 </html>
+
 
 
 
