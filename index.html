@@ -95,10 +95,10 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* 核心修正：px-8 確保左右留白充足，與文字間距達成 1:1 比例 */}
-            <div className="max-w-7xl mx-auto px-8 md:px-10 flex flex-col items-center gap-3">
+            {/* 核心修正：px-5 (約 20px) 確保最左側留白。與下方的 gap-5 數值一致，達成紅圈距離相等的視覺感 */}
+            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3">
                 
-                {/* 第一排：Logo 與 名字 - 居中且縮小字距 */}
+                {/* 第一排：Logo 與 名字 - 保持居中 */}
                 <div className="flex items-center justify-center w-full">
                     <Link to="/" className="flex items-center gap-2">
                         <img src="work/cv/logo01.svg" alt="Logo" className="h-5 md:h-10 w-auto dark:hidden" />
@@ -109,21 +109,20 @@ const Navigation = () => {
                     </Link>
                 </div>
 
-                {/* 第二排：選項區塊 - 使用 justify-between 強迫左右對齊 */}
+                {/* 第二排：選項區塊 - 使用 justify-between 強迫對齊左右預設的 px-5 邊界 */}
                 <div className="flex items-center justify-between w-full lg:w-auto">
-                    {/* 左側選單：進一步縮小字體與間距，防止推擠 */}
-                    <div className="flex items-center gap-2.5 md:gap-8">
+                    {/* 左側選單：gap-5 與外層 px-5 呼應，解決紅圈不均問題 */}
+                    <div className="flex items-center gap-5">
                         <Link to="/gallery" className="text-[9px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
                         <Link to="/exhibitions" className="text-[9px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
                         <Link to="/about" className="text-[9px] md:text-sm font-semibold uppercase tracking-tighter text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
                     </div>
                     
                     {/* 右側按鈕區 */}
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                         <Link to="/contact" className="bg-primary text-white px-2.5 py-1.5 md:px-5 md:py-2 rounded text-[9px] md:text-xs font-bold uppercase shadow-sm">
                             Contact
                         </Link>
-                        {/* 亮暗模式按鈕 */}
                         <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 p-1 flex items-center">
                             <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
                             <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
@@ -436,6 +435,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
