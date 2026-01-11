@@ -93,48 +93,37 @@ const Navigation = () => {
     }, []);
 
     return (
-        /* 修改點：高度改為 h-auto 以容納多行內容，py-2 增加上下內距 */
-        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-2 ${isScrolled ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between">
                 
-                {/* 第一排：Logo 與 名字 - 手機端佔滿 100% 寬度以強迫換行 */}
-                <div className="flex items-center justify-between w-full lg:w-auto mb-2 lg:mb-0">
+                {/* 第一排：Logo 與 名字 (保持原有大小，水平置中) */}
+                <div className="flex items-center justify-center w-full lg:w-auto mb-3 lg:mb-0">
                     <Link to="/" className="flex items-center gap-2">
-                        <img 
-                            src="work/cv/logo01.svg" 
-                            alt="Logo" 
-                            className="h-6 md:h-10 w-auto object-contain dark:hidden"
-                        />
-                        <img 
-                            src="work/cv/logo02.png" 
-                            alt="Logo" 
-                            className="h-6 md:h-10 w-auto object-contain hidden dark:block"
-                        />
-                        <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight whitespace-nowrap">
-                            HUANG PEIRU
+                        <img src="work/cv/logo01.svg" alt="Logo" className="h-6 md:h-10 w-auto dark:hidden" />
+                        <img src="work/cv/logo02.png" alt="Logo" className="h-6 md:h-10 w-auto hidden dark:block" />
+                        <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight whitespace-nowrap uppercase">
+                            Huang Peiru
                         </h2>
                     </Link>
                 </div>
 
-                {/* 第二排：導覽連結與亮暗切換 - 手機端自動縮排至此 */}
-                <div className="flex items-center justify-between w-full lg:w-auto gap-1 md:gap-8">
-                    <div className="flex items-center gap-3 md:gap-6">
-                        <Link to="/gallery" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Works</Link>
-                        <Link to="/exhibitions" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">Exhibitions</Link>
-                        <Link to="/about" className="text-[10px] md:text-sm font-medium uppercase text-gray-700 dark:text-gray-300 whitespace-nowrap">About</Link>
+                {/* 第二排：選項區塊 (修正為置中並統一字體大小) */}
+                <div className="flex items-center justify-center w-full lg:w-auto gap-4 md:gap-8">
+                    <div className="flex items-center justify-center gap-5 md:gap-8">
+                        {/* 加入 hover 變色效果與點擊範圍優化 */}
+                        <Link to="/gallery" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors py-1">Works</Link>
+                        <Link to="/exhibitions" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors py-1">Exhibitions</Link>
+                        <Link to="/about" className="text-[11px] md:text-sm font-semibold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors py-1">About</Link>
                     </div>
                     
                     <div className="flex items-center gap-2">
-                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 md:px-5 md:py-2 rounded-md text-[10px] md:text-xs font-bold uppercase whitespace-nowrap shadow-sm">
+                        <Link to="/contact" className="bg-primary text-white px-4 py-1.5 md:px-5 md:py-2 rounded-md text-[11px] md:text-xs font-bold uppercase tracking-widest hover:bg-opacity-80 transition-all shadow-sm">
                             Contact
                         </Link>
-                        {/* 亮暗模式切換按鈕 */}
-                        <button 
-                            onClick={() => document.documentElement.classList.toggle('dark')} 
-                            className="text-gray-600 dark:text-gray-300 p-1"
-                        >
-                            <span className="material-icons text-lg md:text-xl dark:hidden">dark_mode</span>
-                            <span className="material-icons text-lg md:text-xl hidden dark:block">light_mode</span>
+                        {/* 亮暗模式切換 */}
+                        <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 p-1 flex items-center">
+                            <span className="material-icons text-xl dark:hidden">dark_mode</span>
+                            <span className="material-icons text-xl hidden dark:block">light_mode</span>
                         </button>
                     </div>
                 </div>
@@ -444,6 +433,7 @@ const Navigation = () => {
 </body>
 
 </html>
+
 
 
 
