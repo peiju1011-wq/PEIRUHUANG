@@ -95,7 +95,7 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* 核心修正：px-5 (左右邊距) 必須等於下方的 gap-5 (文字間距)，紅圈距離才會一樣 */}
+            {/* px-5 設定最外層左右留白 */}
             <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3">
                 
                 {/* 第一排：Logo 與 名字 */}
@@ -109,21 +109,21 @@ const Navigation = () => {
                     </Link>
                 </div>
 
-                {/* 第二排：選項區塊 - 放大字體並統一間距 */}
+                {/* 第二排：選項區塊 - 核心等距邏輯 */}
                 <div className="flex items-center justify-between w-full lg:w-auto">
-                    {/* 左側選單：gap-5 與外層 px-5 相同，達成視覺等距 */}
+                    {/* 左側與中間項目：統一使用 gap-5 */}
                     <div className="flex items-center gap-5">
                         <Link to="/gallery" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
                         <Link to="/exhibitions" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
                         <Link to="/about" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
                     </div>
                     
-                    {/* 右側：亮暗鈕與 Contact 按鈕 */}
-                    <div className="flex items-center gap-2">
-                        <Link to="/contact" className="bg-primary text-white px-2.5 py-1.5 rounded text-[10px] font-bold uppercase">
+                    {/* 右側 Contact 藍框與亮暗鈕：透過 gap-5 確保間距與左側一致 */}
+                    <div className="flex items-center gap-5">
+                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[10px] font-bold uppercase shadow-md shrink-0">
                             Contact
                         </Link>
-                        <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 p-1 flex items-center">
+                        <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 flex items-center shrink-0">
                             <span className="material-icons text-xl dark:hidden">dark_mode</span>
                             <span className="material-icons text-xl hidden dark:block">light_mode</span>
                         </button>
@@ -435,6 +435,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
