@@ -95,40 +95,40 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* px-5 定義最外層左右邊距，即第一條紅線的對等寬度 */}
-            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3">
+            {/* px-6 確保最左側紅線距離與手機邊緣有安全空間 */}
+            <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col items-center gap-3">
                 
                 {/* 第一排：Logo 與 名字 */}
                 <div className="flex items-center justify-center w-full">
                     <Link to="/" className="flex items-center gap-2">
                         <img src="work/cv/logo01.svg" alt="Logo" className="h-5 md:h-10 w-auto dark:hidden" />
                         <img src="work/cv/logo02.png" alt="Logo" className="h-5 md:h-10 w-auto hidden dark:block" />
-                        <h2 className="text-gray-900 dark:text-white text-base md:text-xl font-bold tracking-tight uppercase">
+                        <h2 className="text-gray-900 dark:text-white text-sm md:text-xl font-bold tracking-tighter uppercase">
                             Huang Peiru
                         </h2>
                     </Link>
                 </div>
 
-                {/* 第二排：核心對齊區塊 */}
+                {/* 第二排：所有選項一律水平排列，並確保等距 */}
                 <div className="flex items-center justify-center w-full">
-                    {/* 核心修正：
-                        1. 使用 justify-center 讓整組選單置中
-                        2. 統一 gap-5 (或 gap-6) 確保「文字到文字」與「文字到藍框」的物理距離完全一致
-                    */}
-                    <div className="flex items-center gap-5 md:gap-8">
+                    <div className="flex items-center gap-4 md:gap-8">
+                        {/* 選單文字 - 確保與 Contact 藍框左側的距離 (gap-4) 等於紅線寬度 */}
                         <Link to="/gallery" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Works</Link>
                         <Link to="/exhibitions" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Exhibitions</Link>
                         <Link to="/about" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">About</Link>
                         
-                        {/* Contact 藍框：字體大小設為 11px 與 About 相同
-                            透過 gap-5，About 邊緣到此藍框邊緣的距離會與左側紅線寬度完全相同 
-                        */}
+                        {/* Contact 藍框 - 字體大小 text-[11px] 與 About 一致 */}
                         <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0">
                             Contact
                         </Link>
 
-                        {/* 亮暗模式切換按鈕 - 保留並同樣遵循 gap-5 的間距規則 */}
-                        <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 flex items-center shrink-0">
+                        {/* 亮暗模式切換按鈕 - 確保重新加入並保留 gap 間距 */}
+                        <button 
+                            onClick={() => document.documentElement.classList.toggle('dark')} 
+                            className="text-gray-600 dark:text-gray-300 flex items-center shrink-0"
+                            aria-label="Toggle Dark Mode"
+                        >
+                            {/* 使用 block/hidden 切換圖示，避免兩者同時消失 */}
                             <span className="material-icons text-xl dark:hidden">dark_mode</span>
                             <span className="material-icons text-xl hidden dark:block">light_mode</span>
                         </button>
@@ -440,6 +440,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
