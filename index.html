@@ -109,20 +109,23 @@ const Navigation = () => {
                     </Link>
                 </div>
 
-                {/* 第二排：選項區塊 - 核心等距邏輯 */}
+                {/* 第二排：核心等距修正 */}
                 <div className="flex items-center justify-between w-full lg:w-auto">
-                    {/* 左側與中間項目：統一使用 gap-5 */}
-                    <div className="flex items-center gap-5">
+                    
+                    {/* 左側與中間項目：統一使用 gap-6 (可根據需求微調，確保紅圈距離相等) */}
+                    <div className="flex items-center gap-6">
                         <Link to="/gallery" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Works</Link>
                         <Link to="/exhibitions" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Exhibitions</Link>
                         <Link to="/about" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</Link>
                     </div>
                     
-                    {/* 右側 Contact 藍框與亮暗鈕：透過 gap-5 確保間距與左側一致 */}
-                    <div className="flex items-center gap-5">
-                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[10px] font-bold uppercase shadow-md shrink-0">
+                    {/* 右側 Contact 與亮暗鈕：關鍵在於 gap-6 必須與左側 gap-6 完全一致 */}
+                    <div className="flex items-center gap-6">
+                        {/* 修正：CONTACT 字體大小設為 text-[11px]，與 ABOUT 完美對等 */}
+                        <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0">
                             Contact
                         </Link>
+                        {/* 亮暗模式按鈕同樣保持 gap-6 間距 */}
                         <button onClick={() => document.documentElement.classList.toggle('dark')} className="text-gray-600 dark:text-gray-300 flex items-center shrink-0">
                             <span className="material-icons text-xl dark:hidden">dark_mode</span>
                             <span className="material-icons text-xl hidden dark:block">light_mode</span>
@@ -435,6 +438,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
