@@ -95,40 +95,45 @@ const Navigation = () => {
         <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
             isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* px-5 設定全域左右邊距 */}
-            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col gap-3">
+            {/* 亮暗模式按鈕：在手機端跟著排版，但在桌機端 (lg:) 變為固定在右上角 */}
+            <div className="absolute top-4 right-5 md:right-10 z-[60]">
+                <button 
+                    onClick={() => document.documentElement.classList.toggle('dark')} 
+                    className="text-gray-600 dark:text-gray-300 p-1 flex items-center"
+                    aria-label="Toggle Dark Mode"
+                >
+                    <span className="material-icons text-2xl md:text-3xl dark:hidden">dark_mode</span>
+                    <span className="material-icons text-2xl md:text-3xl hidden dark:block">light_mode</span>
+                </button>
+            </div>
+
+            {/* 主容器：lg:items-center 確保桌機版內容垂直置中 */}
+            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3">
                 
-                {/* 第一排：LOGO加大，名字字體同步微調 */}
-                <div className="flex items-center justify-between w-full">
+                {/* 第一排：Logo 與 名字 - lg:justify-center 確保桌機版置中 */}
+                <div className="flex items-center justify-between lg:justify-center w-full gap-4">
                     <Link to="/" className="flex items-center gap-3">
-                        {/* LOGO 加大：手機版 h-8 (32px), 桌機版 h-12 (48px) */}
-                        <img src="work/cv/logo01.svg" alt="Logo" className="h-8 md:h-12 w-auto dark:hidden transition-all" />
-                        <img src="work/cv/logo02.png" alt="Logo" className="h-8 md:h-12 w-auto hidden dark:block transition-all" />
+                        <img src="work/cv/logo01.svg" alt="Logo" className="h-8 md:h-12 w-auto dark:hidden" />
+                        <img src="work/cv/logo02.png" alt="Logo" className="h-8 md:h-12 w-auto hidden dark:block" />
                         <h2 className="text-gray-900 dark:text-white text-lg md:text-2xl font-bold tracking-tight uppercase">
                             Huang Peiru
                         </h2>
                     </Link>
-                    
-                    {/* 亮暗模式按鈕：靠右對齊 */}
-                    <button 
-                        onClick={() => document.documentElement.classList.toggle('dark')} 
-                        className="text-gray-600 dark:text-gray-300 flex items-center p-1"
-                        aria-label="Toggle Dark Mode"
-                    >
-                        <span className="material-icons text-2xl md:text-3xl dark:hidden">dark_mode</span>
-                        <span className="material-icons text-2xl md:text-3xl hidden dark:block">light_mode</span>
-                    </button>
+                    {/* 手機版這裡會留空，因為按鈕已經被 absolute 定位抽離，不會影響手機排版 */}
+                    <div className="w-8 h-8 lg:hidden"></div> 
                 </div>
 
-                {/* 第二排：等距選單文字 */}
-                <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-5">
+                {/* 第二排：選單項目 - lg:justify-center 確保桌機版整體置中 */}
+                <div className="flex items-center justify-between lg:justify-center w-full lg:gap-12">
+                    {/* 手機版維持間距 gap-5，桌機版可用 lg:gap-12 拉開空間 */}
+                    <div className="flex items-center gap-5 lg:gap-12">
                         <Link to="/gallery" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Works</Link>
                         <Link to="/exhibitions" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">Exhibitions</Link>
                         <Link to="/about" className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap">About</Link>
                     </div>
                     
-                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0">
+                    {/* Contact 藍按鈕：手機版維持原樣，桌機版會因為父層 justify-center 而併入排版中心 */}
+                    <Link to="/contact" className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0 lg:ml-12">
                         Contact
                     </Link>
                 </div>
@@ -438,6 +443,7 @@ const App = () => {
 </body>
 
 </html>
+
 
 
 
