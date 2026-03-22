@@ -388,7 +388,7 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
         <div className="lg:col-span-7 space-y-6">
 
           {/* 主圖 */}
-       <img
+<img
   src={work.img}
   onClick={() => setActiveImg(work.img)}
   className="w-full rounded shadow-sm cursor-zoom-in"
@@ -470,7 +470,7 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
   >
     <img
       src={activeImg}
-      className="max-w-[90%] max-h-[90%] rounded shadow-2xl"
+     className="max-w-[90%] max-h-[90%] w-auto h-auto"
       onClick={(e) => e.stopPropagation()} 
     />
   </div>
