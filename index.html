@@ -120,9 +120,9 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { createRoot } = ReactDOM;
-        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+const { useState, useEffect } = React;
+const { createRoot } = ReactDOM;
+const { HashRouter, Routes, Route, Link, useNavigate, useLocation, useParams } = ReactRouterDOM;
 
         // --- Shared Components ---
 
@@ -284,13 +284,21 @@ const Navigation = () => {
             </div>
         );
 
-const { useParams } = ReactRouterDOM;
+
 
 
 
 const WorkDetailPage = () => {
-
+const [activeImg, setActiveImg] = useState(null);
   const { id } = useParams();
+
+  useEffect(() => {
+  const handleKey = (e) => {
+    if (e.key === "Escape") setActiveImg(null);
+  };
+  window.addEventListener("keydown", handleKey);
+  return () => window.removeEventListener("keydown", handleKey);
+}, []);
 
   const works = {
     "1": {
@@ -303,7 +311,15 @@ const WorkDetailPage = () => {
         "work/2024w/01-2.png",
         "work/2024w/01-3.png"
       ],
-      desc: "This piece explores the tension between chaos and structure. The heavy impasto layers represent the accumulation of memory, overlaid with a rigid grid."
+      desc: `EN:
+This piece explores the tension between chaos and structure. 
+Layers of impasto accumulate like traces of memory, gradually forming a dense and tactile surface. 
+The rigid grid overlays this organic flow, creating a quiet dialogue between control and disorder.
+
+中文：
+本作品探討混沌與結構之間的張力。 
+厚重的肌理如同記憶的堆積，在畫面中逐層沉澱，形成具有觸感的表面。 
+其上覆蓋的理性網格，與內在的流動形成對話，在秩序與無序之間取得微妙的平衡。`
     },
 
     "4": {
@@ -316,7 +332,11 @@ const WorkDetailPage = () => {
         "work/2024w/04-2.png",
         "work/2024w/04-3.png"
       ],
-      desc: "A continuation of layered textures and structured rhythm."
+     desc: `EN:
+This work extends the exploration of layered textures and rhythmic structures. Through the interplay of grid and fluid strokes, the surface reveals a tension between control and spontaneity, echoing the quiet movement of water within a confined space.
+
+中文：
+本作品延續對層次肌理與結構節奏的探索，透過網格與流動筆觸的交織，在秩序與自由之間形成張力，如同被框限卻仍持續流動的水紋。`
     },
 
 
@@ -330,7 +350,15 @@ const WorkDetailPage = () => {
         "work/2024w/05-2.png",
         "work/2024w/05-3.png"
       ],
-      desc: "A continuation of layered textures and structured rhythm."
+      desc: `EN:
+This piece deepens the dialogue between structure and fluid motion. 
+The grid appears softer and more integrated, allowing the underlying textures to emerge with greater subtlety. 
+Layers of color blend and dissolve, suggesting a state where boundaries become less defined and movement becomes more internal.
+
+中文：
+本作品進一步深化結構與流動之間的對話。 
+網格變得更為柔和，逐漸融入整體，使底層的色彩與肌理更細緻地浮現。 
+色彩在層層交疊中融合與消散，邊界變得模糊，流動轉為內在的感受。`
     }
 
 
@@ -360,20 +388,22 @@ const WorkDetailPage = () => {
         <div className="lg:col-span-7 space-y-6">
 
           {/* 主圖 */}
-          <img
-            src={work.img}
-            className="w-full rounded shadow-sm"
-          />
+       <img
+  src={work.img}
+  onClick={() => setActiveImg(work.img)}
+  className="w-full rounded shadow-sm cursor-zoom-in"
+/>
 
           {/* 縮圖（保留你原本排版🔥） */}
           <div className="grid grid-cols-3 gap-4">
-            {work.gallery.map((s, i) => (
-              <img
-                key={i}
-                src={s}
-                className="aspect-square object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
-              />
-            ))}
+{work.gallery.map((s, i) => (
+  <img
+    key={i}
+    src={s}
+    onClick={() => setActiveImg(s)}
+    className="aspect-square object-cover rounded cursor-zoom-in hover:opacity-80 transition-opacity"
+  />
+))}
           </div>
 
         </div>
@@ -421,7 +451,7 @@ const WorkDetailPage = () => {
           {/* 說明 */}
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h3 className="font-display text-xl mb-4">
-              Artist's Note
+              Artist Statement
             </h3>
 
             <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">
@@ -432,6 +462,20 @@ const WorkDetailPage = () => {
         </div>
 
       </div>
+
+{activeImg && (
+  <div
+    className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center"
+    onClick={() => setActiveImg(null)}
+  >
+    <img
+      src={activeImg}
+      className="max-w-[90%] max-h-[90%] rounded shadow-2xl"
+      onClick={(e) => e.stopPropagation()} 
+    />
+  </div>
+)}
+
     </div>
   );
 };
@@ -551,6 +595,9 @@ const WorkDetailPage = () => {
                                     <a href="mailto:peiju1011@gmail.com" className="text-primary hover:underline font-medium text-lg">peiju1011@gmail.com</a>
                                     <p className="text-sm dark:text-white tracking-widest uppercase">New Taipei City, Taiwan</p>
                                 </div>
+
+                                
+
                             </div>
                         </div>
                     </main>
@@ -587,11 +634,11 @@ const App = () => {
 };
 
         const root = createRoot(document.getElementById('root'));
-        root.render(
-            <MemoryRouter>
-                <App />
-            </MemoryRouter>
-        );
+root.render(
+  <HashRouter>
+    <App />
+  </HashRouter>
+);
     </script>
 </body>
 
