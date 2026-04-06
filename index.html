@@ -124,9 +124,11 @@ const { useState, useEffect } = React;
 const { createRoot } = ReactDOM;
 const { HashRouter, Routes, Route, Link, useNavigate, useLocation, useParams } = ReactRouterDOM;
 
+
         // --- Shared Components ---
 
 const Navigation = () => {
+    const [activeIndex, setActiveIndex] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -259,9 +261,9 @@ const Navigation = () => {
                             { title: "Notes on water traces No. 1", price: "$1,3000", year: "2024", img: "work/2024w/0141x32x2cm2024.png" , link: "/work/1" },
                             { title: "Notes on water traces No. 4", price: "$1,3000", year: "2024", img: "work/2024w/0441x32x2cm2024.png" , link: "/work/4" },
                             { title: "Notes on water traces No. 5", price: "$1,3000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
-                            { title: "Notes on water traces No. 11", price: "$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png" , link: "#" },
+                            { title: "Notes on water traces No. 11", price: "$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png" , link: "/work/11" },
                             { title: "Notes on water traces No. 6", price: "1,3000", year: "2024", img: "work/2024w/0641x32x2cm2024.png" , link: "/work/6" },
-                            { title: "Notes on water traces No. 7", price: "$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "#" },
+                            { title: "Notes on water traces No. 7", price: "$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
                         ].map((item, idx) => (
                             <Link to={item.link} key={idx} className="group flex flex-col">
                                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-sm">
@@ -289,16 +291,9 @@ const Navigation = () => {
 
 
 const WorkDetailPage = () => {
-const [activeImg, setActiveImg] = useState(null);
-  const { id } = useParams();
 
-  useEffect(() => {
-  const handleKey = (e) => {
-    if (e.key === "Escape") setActiveImg(null);
-  };
-  window.addEventListener("keydown", handleKey);
-  return () => window.removeEventListener("keydown", handleKey);
-}, []);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const { id } = useParams();
 
   const works = {
     "1": {
@@ -365,7 +360,7 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
       title: "方框上的水紋-6",
       year: "2024",
       price: "$13,000",
-      img: "work/2024w/0541x32x2cm2024.png",
+      img: "work/2024w/0641x32x2cm2024.png",
       gallery: [
         "work/2024w/06-1.jpg",
         "work/2024w/06-2.png",
@@ -380,7 +375,53 @@ The composition suggests a state of suspended movement—where order and fluidit
 本作品中，結構逐漸消融於更為細膩且帶有空氣感的畫面之中。 
 網格的痕跡變得柔和而隱約，而是與層層肌理交織融合，使色彩與筆觸以更內在、低聲的節奏浮現。 
 整體呈現一種懸浮的流動狀態，在秩序與流動之間，趨近於靜默的共存。`
-    }
+    },
+
+     "7": {
+      title: "方框上的水紋-7",
+      year: "2024",
+      price: "$15,500",
+      img: "work/2024w/07445x345x5cm2024.png",
+      gallery: [
+        "work/2024w/07-1.jpg",
+        "work/2024w/06-2.png",
+        "work/2024w/07-3.png"
+      ],
+desc: `EN:
+This work continues the perspective of an aerial view, capturing the compressed rhythm of an accelerated urban landscape. 
+Layered horizontal strokes resemble the flow of traffic and architectural strata, while vertical interruptions echo the structural grid of the city seen from above. 
+Pigment is dragged and accumulated across the surface, forming a dense visual tempo that reflects the urgency and repetition of metropolitan life. 
+Within this intensity, moments of subtle color emerge, suggesting fleeting pauses within an otherwise relentless rhythm.
+
+中文：
+本作品延續空中俯視的視角，描繪出都市高速運轉下被壓縮的節奏感。 
+橫向堆疊的筆觸如同車流與建築的層層排列，而垂直的切入則呼應城市結構的網格秩序。 
+顏料在畫面中被推移與累積，形成密集且持續的視覺節奏，映照出都會生活的急促與重複。 
+在這樣的張力之中，細微的色彩變化隱約浮現，像是在高速流動中短暫出現的停頓與呼吸。`
+    },
+
+         "11": {
+      title: "方框上的水紋-11",
+      year: "2024",
+      price: "$20,000",
+      img: "work/2024w/11605x455x2cm2024.png",
+      gallery: [
+        "work/2024w/11-1.jpg",
+        "work/2024w/11-2.jpg",
+        "work/2024w/11-3.png"
+      ],
+desc: `EN:
+This work presents an aerial perspective of the city as a compressed and layered mass. 
+Unlike a flowing rhythm, the surface is built through accumulation and pressure, where pigment is repeatedly pushed, flattened, and overlapped. 
+Horizontal strata resemble densely packed urban blocks, while subtle vertical traces suggest structural remnants buried within. 
+The image evokes a sense of weight and compression, as if the city is being continuously pressed into itself—capturing the overwhelming density and silent tension of metropolitan existence.
+
+中文：
+本作品以空中俯視的視角，呈現城市被壓縮後的層層堆積狀態。 
+畫面不再是流動，而是透過反覆推擠、覆蓋與壓平所形成的厚重肌理。 
+水平堆疊的筆觸如同密集排列的都市區塊，而隱約的垂直痕跡則像是被埋藏其中的結構殘影。 
+整體帶有一種被持續擠壓的重量感，彷彿城市在自身之中不斷堆疊與下沉，呈現出都會空間的密度與內在張力。`
+    },
 
 
   };
@@ -391,115 +432,145 @@ The composition suggests a state of suspended movement—where order and fluidit
     return <div className="pt-32 text-center">找不到作品</div>;
   }
 
+  // ✅ 圖片集合（核心）
+  const images = [work.img, ...work.gallery];
+
+  const next = () => {
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prev = () => {
+    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  // ✅ 鍵盤控制
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setActiveIndex(null);
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   return (
     <div className="pt-32 pb-20 max-w-7xl mx-auto px-6">
 
-      {/* 麵包屑（保留你原本風格） */}
+      {/* 麵包屑 */}
       <div className="mb-8 text-xs tracking-widest uppercase text-gray-500">
-        <Link to="/gallery" className="hover:underline">Portfolio</Link>
+        <Link to="/gallery">Portfolio</Link>
         <span className="mx-2">/</span>
-        <span className="text-gray-900 dark:text-gray-200">
-          {work.title}
-        </span>
+        <span>{work.title}</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-        {/* 左側圖片 */}
+        {/* 左 */}
         <div className="lg:col-span-7 space-y-6">
 
           {/* 主圖 */}
-<img
-  src={work.img}
-  onClick={() => setActiveImg(work.img)}
-  className="w-full rounded shadow-sm cursor-zoom-in"
-/>
+          <img
+            src={work.img}
+            onClick={() => setActiveIndex(0)}
+            className="w-full rounded cursor-zoom-in"
+          />
 
-          {/* 縮圖（保留你原本排版🔥） */}
+          {/* 縮圖 */}
           <div className="grid grid-cols-3 gap-4">
-{work.gallery.map((s, i) => (
-  <img
-    key={i}
-    src={s}
-    onClick={() => setActiveImg(s)}
-    className="aspect-square object-cover rounded cursor-zoom-in hover:opacity-80 transition-opacity"
-  />
-))}
+            {work.gallery.map((s, i) => (
+              <img
+                key={i}
+                src={s}
+                onClick={() => setActiveIndex(i + 1)}
+                className="aspect-square object-cover rounded cursor-zoom-in hover:opacity-80"
+              />
+            ))}
           </div>
 
         </div>
 
-        {/* 右側資訊 */}
+        {/* 右 */}
         <div className="lg:col-span-5">
-
-          <header className="border-b border-gray-100 dark:border-gray-800 pb-8 mb-8">
-
-            <h1 className="font-display text-4xl font-light text-gray-900 dark:text-white mb-2">
-              {work.title}
-            </h1>
-
-            <p className="font-display italic text-xl text-gray-500">
-              {work.year}
-            </p>
-
-            <div className="flex justify-between mt-6">
-              <div>
-                <p className="text-xs uppercase text-gray-400">Medium</p>
-                <p className="font-medium">壓克力彩、畫布</p>
-              </div>
-              <div className="text-right">
-                <p className="text-xs uppercase text-gray-400">Dimensions</p>
-                <p className="font-medium">41 x 32 x 2 cm</p>
-              </div>
-            </div>
-
-          </header>
-
-          {/* 價格 + 按鈕 */}
-          <div className="flex items-center justify-between mb-10">
-            <span className="font-display text-3xl text-gray-900 dark:text-white">
-              {work.price}
-            </span>
-
-            <Link
-              to="/contact"
-              className="bg-primary text-white px-8 py-3 rounded uppercase text-xs font-bold tracking-widest shadow-lg"
-            >
-              Inquire
-            </Link>
-          </div>
-
-          {/* 說明 */}
-          <div className="prose prose-slate dark:prose-invert max-w-none">
-            <h3 className="font-display text-xl mb-4">
-              Artist Statement
-            </h3>
-
-            <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-              {work.desc}
-            </p>
-          </div>
-
+          <h1 className="text-3xl mb-4">{work.title}</h1>
+          <p className="mb-4">{work.year}</p>
+          <p className="mb-6">{work.price}</p>
+          <p className="text-gray-500 whitespace-pre-line">{work.desc}</p>
         </div>
 
       </div>
 
-{activeImg && (
-  <div
-    className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center"
-    onClick={() => setActiveImg(null)}
-  >
-    <img
-      src={activeImg}
-     className="max-w-[90%] max-h-[90%] w-auto h-auto"
-      onClick={(e) => e.stopPropagation()} 
-    />
-  </div>
-)}
+      {/* 🔥 Modal */}
+      {activeIndex !== null && (
+        <div
+          className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center"
+          onClick={() => setActiveIndex(null)}
+        >
+
+          {/* 左 */}
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    prev();
+  }}
+  className="
+    absolute left-10 md:left-16
+    top-1/2 -translate-y-1/2
+    w-16 h-16
+    flex items-center justify-center
+    rounded-full
+    bg-white/10 backdrop-blur
+    text-white
+    text-2xl
+    hover:bg-white/20
+    transition-all duration-300
+  "
+>
+  ‹
+</button>
+
+          {/* 圖 */}
+          <img
+            src={images[activeIndex]}
+            className="max-w-[90%] max-h-[90%] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* 右 */}
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    next();
+  }}
+  className="
+    absolute right-10 md:right-16
+    top-1/2 -translate-y-1/2
+    w-16 h-16
+    flex items-center justify-center
+    rounded-full
+    bg-white/10 backdrop-blur
+    text-white
+    text-2xl
+    hover:bg-white/20
+    transition-all duration-300
+  "
+>
+  ›
+</button>
+
+          {/* 張數 */}
+          <div className="absolute bottom-6 text-white text-xs tracking-widest">
+            {activeIndex + 1} / {images.length}
+          </div>
+
+        </div>
+      )}
 
     </div>
   );
 };
+
+
 
         const ExhibitionsPage = () => (
             <div className="pt-24 min-h-screen">
