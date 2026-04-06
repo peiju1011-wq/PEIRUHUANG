@@ -550,7 +550,9 @@ The image evokes a sense of weight and compression, as if the city is being cont
 
   {/* Email */}
 <a
-  href={`mailto:peiju1011@gmail.com?subject=Inquiry about ${work.title}`}
+  href={`mailto:peiju1011@gmail.com?subject=${encodeURIComponent(
+    `Inquiry about ${work.title}`
+  )}`}
   className="
     text-[11px]
     text-gray-500
@@ -562,7 +564,7 @@ The image evokes a sense of weight and compression, as if the city is being cont
     transition
   "
 >
-  or contact via email
+  contact via email
 </a>
 
 
