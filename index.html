@@ -549,25 +549,24 @@ The image evokes a sense of weight and compression, as if the city is being cont
   </Link>
 
   {/* Email */}
-<a
-  href={`mailto:peiju1011@gmail.com?subject=${encodeURIComponent(
-    `Inquiry about ${work.title}`
-  )}&body=${encodeURIComponent(
-    `Hello, I would like to inquire about "${work.title}".`
-  )}`}
-  className="
-    text-[11px]
-    text-gray-500
-    tracking-wide
+<div className="flex flex-col gap-2">
 
-    hover:text-[#2070DF]
-    dark:hover:text-[#4f7cff]
+  {/* mailto */}
+  <a
+    href={`mailto:peiju1011@gmail.com?subject=${encodeURIComponent(
+      `Inquiry about ${work.title}`
+    )}`}
+    className="text-[11px] text-gray-500 hover:text-[#2070DF] transition"
+  >
+    contact via email
+  </a>
 
-    transition
-  "
->
-  contact via email
-</a>
+  {/* 備用：直接顯示 email */}
+  <p className="text-[11px] text-gray-400">
+    peiju1011@gmail.com
+  </p>
+
+</div>
 
 
 
