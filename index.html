@@ -258,12 +258,12 @@ const Navigation = () => {
                 <main className="max-w-7xl mx-auto px-6 py-12">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
                         {[
-                            { title: "Notes on water traces No. 1", price: "$1,3000", year: "2024", img: "work/2024w/0141x32x2cm2024.png" , link: "/work/1" },
-                            { title: "Notes on water traces No. 4", price: "$1,3000", year: "2024", img: "work/2024w/0441x32x2cm2024.png" , link: "/work/4" },
-                            { title: "Notes on water traces No. 5", price: "$1,3000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
-                            { title: "Notes on water traces No. 11", price: "$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png" , link: "/work/11" },
-                            { title: "Notes on water traces No. 6", price: "1,3000", year: "2024", img: "work/2024w/0641x32x2cm2024.png" , link: "/work/6" },
-                            { title: "Notes on water traces No. 7", price: "$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
+                            { title: "Notes on water traces No. 1", price: "NT$1,3000", year: "2024", img: "work/2024w/0141x32x2cm2024.png" , link: "/work/1" },
+                            { title: "Notes on water traces No. 4", price: "NT$1,3000", year: "2024", img: "work/2024w/0441x32x2cm2024.png" , link: "/work/4" },
+                            { title: "Notes on water traces No. 5", price: "NT$1,3000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
+                            { title: "Notes on water traces No. 11", price: "NT$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png" , link: "/work/11" },
+                            { title: "Notes on water traces No. 6", price: "NT$1,3000", year: "2024", img: "work/2024w/0641x32x2cm2024.png" , link: "/work/6" },
+                            { title: "Notes on water traces No. 7", price: "NT$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
                         ].map((item, idx) => (
                             <Link to={item.link} key={idx} className="group flex flex-col">
                                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-sm">
@@ -299,7 +299,7 @@ const WorkDetailPage = () => {
     "1": {
       title: "方框上的水紋-1",
       year: "2023",
-      price: "$13,000",
+      price: "NT$13,000",
       img: "work/2024w/0141x32x2cm2024.png",
       gallery: [
         "work/2024w/01-1.jpg",
@@ -320,7 +320,7 @@ The rigid grid overlays this organic flow, creating a quiet dialogue between con
     "4": {
       title: "方框上的水紋-4",
       year: "2024",
-      price: "$13,000",
+      price: "NT$13,000",
       img: "work/2024w/0441x32x2cm2024.png",
       gallery: [
         "work/2024w/04-1.png",
@@ -338,7 +338,7 @@ This work extends the exploration of layered textures and rhythmic structures. T
     "5": {
       title: "方框上的水紋-5",
       year: "2024",
-      price: "$13,000",
+      price: "NT$13,000",
       img: "work/2024w/0541x32x2cm2024.png",
       gallery: [
         "work/2024w/05-1.png",
@@ -359,7 +359,7 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
         "6": {
       title: "方框上的水紋-6",
       year: "2024",
-      price: "$13,000",
+      price: "NT$13,000",
       img: "work/2024w/0641x32x2cm2024.png",
       gallery: [
         "work/2024w/06-1.jpg",
@@ -380,7 +380,7 @@ The composition suggests a state of suspended movement—where order and fluidit
      "7": {
       title: "方框上的水紋-7",
       year: "2024",
-      price: "$15,500",
+      price: "NT$15,500",
       img: "work/2024w/07445x345x5cm2024.png",
       gallery: [
         "work/2024w/07-1.jpg",
@@ -403,7 +403,7 @@ Within this intensity, moments of subtle color emerge, suggesting fleeting pause
          "11": {
       title: "方框上的水紋-11",
       year: "2024",
-      price: "$20,000",
+      price: "NT$20,000",
       img: "work/2024w/11605x455x2cm2024.png",
       gallery: [
         "work/2024w/11-1.jpg",
@@ -490,30 +490,86 @@ The image evokes a sense of weight and compression, as if the city is being cont
 
         </div>
 
-{/* 右 */}
-<div className="lg:col-span-5">
+<div className="lg:col-span-5 space-y-6">
 
   {/* 標題 */}
-  <h1 className="text-3xl mb-4 text-gray-900 dark:text-white">
+  <h1 className="text-3xl md:text-4xl mb-2 leading-tight text-gray-900 dark:text-white">
     {work.title}
   </h1>
 
-  {/* 年代 */}
-  <p className="mb-4 text-gray-600 dark:text-gray-400 tracking-wide">
-    {work.year}
-  </p>
+  {/* 年代 + 價格 */}
+  <div className="space-y-1 text-sm tracking-wide">
+    <p className="text-gray-500 dark:text-gray-400">
+      {work.year}
+    </p>
 
-  {/* 價格 */}
-  <p className="mb-6 text-gray-900 dark:text-white font-medium">
-    {work.price}
-  </p>
+    <p className="text-lg text-gray-900 dark:text-white font-medium">
+      {work.price}
+    </p>
 
-  {/* 內文 */}
-  <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line leading-relaxed">
-    {work.desc}
-  </p>
+ 
+  </div>
+
+
+
+  {/* 理念 */}
+{/* 描述 */}
+<p className="text-sm text-gray-600 dark:text-gray-300 whitespace-pre-line leading-relaxed">
+  {work.desc}
+</p>
+
+{/* CTA 區 */}
+<div className="pt-10 flex flex-col items-start gap-4">
+
+  {/* 分隔感（很關鍵） */}
+  <div className="w-10 h-[1px] bg-gray-300 dark:bg-gray-700" />
+
+  {/* 按鈕 */}
+  <Link
+    to="/contact"
+    className="
+      inline-block
+      px-6 py-2
+
+      bg-[#2070DF]
+      text-white
+
+      text-[11px] tracking-[0.25em] font-medium
+
+      rounded-md
+
+      transition-all duration-300 ease-out
+
+      hover:bg-[#1a5fc2]
+      hover:shadow-md
+      active:scale-[0.97]
+    "
+  >
+    INQUIRE
+  </Link>
+
+  {/* Email */}
+  <a
+    href="mailto:your@email.com"
+    className="
+      text-[11px]
+      text-gray-500
+      tracking-wide
+
+      hover:text-gray-900 dark:hover:text-white
+
+      transition
+    "
+  >
+    or Email for details
+  </a>
+
+
+
+  </div>
 
 </div>
+
 
       </div>
 
