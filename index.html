@@ -234,57 +234,170 @@ const Navigation = () => {
             </div>
         );
 
-        const GalleryPage = () => (
+const works = {
+  "2024": [
+    { title: "Notes on water traces No. 1", price: "NT$13,000", year: "2024", img: "work/2024w/0141x32x2cm2024.png", link: "/work/1" },
+    { title: "Notes on water traces No. 4", price: "NT$13,000", year: "2024", img: "work/2024w/0441x32x2cm2024.png", link: "/work/4" },
+    { title: "Notes on water traces No. 5", price: "NT$13,000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
+    { title: "Notes on water traces No. 11", price: "NT$20,000", year: "2024", img: "work/2024w/11605x455x2cm2024.png", link: "/work/11" },
+    { title: "Notes on water traces No. 6", price: "NT$13,000", year: "2024", img: "work/2024w/0641x32x2cm2024.png", link: "/work/6" },
+    { title: "Notes on water traces No. 7", price: "NT$15,500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
+  ],
+
+"2026": [
+  {
+    title: "夜光譜曲 No.1",
+    price: "NT$18,000",
+    year: "2026",
+    img: "work/2024w/01130x97cm,2017.jpg",
+    link: "/work/101"
+  },
+  {
+    title: "夜光譜曲 No.2",
+    price: "NT$18,000",
+    year: "2026",
+    img: "work/2024w/0491x92.5cm,2016.jpg",
+    link: "/work/102"
+  },
+  {
+    title: "夜光譜曲 No.3",
+    price: "NT$18,000",
+    year: "2026",
+    img: "work/2024w/01166x122cm,2018.jpg",
+    link: "/work/103"
+  },
+  {
+    title: "夜光譜曲 No.4",
+    price: "NT$20,000",
+    year: "2026",
+    img: "work/2024w/05146x112cm,2017.jpg",
+    link: "/work/104"
+  },
+  {
+    title: "夜光譜曲 No.5",
+    price: "NT$18,000",
+    year: "2026",
+    img: "work/2024w/07240x103cm,2014.jpg",
+    link: "/work/105"
+  },
+  {
+    title: "夜光譜曲 No.6",
+    price: "NT$15,500",
+    year: "2026",
+    img: "work/2024w/05,41x24cm,2014.jpg",
+    link: "/work/106"
+  }
+]
+};
+
+const GalleryPage = () => {
+  const location = useLocation();
+
+  const [activeCategory, setActiveCategory] = useState(
+    (location.state && location.state.category) || "2024"
+  );
+
+  useEffect(() => {
+    if (location.state && location.state.category) {
+      setActiveCategory(location.state.category);
+    }
+  }, [location.state]);
+
+  return (
             <div className="pt-24 min-h-screen">
-                <header className="py-16 text-center">
-                    <div className="max-w-4xl mx-auto px-4">
-                        <h2 className="font-display text-4xl md:text-6xl text-gray-800 dark:text-white mb-6 fade-in">Selected Works</h2>
-                        <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light fade-in">
-                            Exploring the delicate balance between chaos and serenity through textured strokes and muted palettes.
-                        </p>
-                    </div>
-                </header>
+             <header className="py-16 text-center">
+    <div className="max-w-4xl mx-auto px-4">
+        <h2 className="font-display text-4xl md:text-6xl text-gray-800 dark:text-white mb-6 fade-in">
+            Selected Works
+        </h2>
+
+       <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed font-light fade-in whitespace-pre-line">
+{activeCategory === "2024"
+? `Continuing the aerial view of the city, these paintings reinterpret urban structures as abstract visual topographies, where layered textures resemble woven fabrics and evolving city patterns.
+
+延續俯視都市的創作視角，作品將城市結構轉化為抽象的視覺地景，透過層層堆疊的肌理，形成近似織布般的質感與不斷演化的都市紋譜。。`
+
+: `Revealing the hidden rhythm of the city through aerial perspectives, layered structures, and dissolving boundaries.
+
+透過空中視角、層層堆疊的結構與逐漸消融的邊界，揭示城市隱藏的節奏。`
+}
+</p>
+    </div>
+</header>
 
                 <div className="sticky top-16 z-40 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md py-4 border-b border-gray-100 dark:border-gray-800">
                     <div className="max-w-7xl mx-auto px-4 overflow-x-auto">
                         <div className="flex justify-center space-x-8 min-w-max">
-                            {['Acrylic paint'].map((cat, i) => (
-                                <button key={i} className={`text-sm uppercase tracking-wider px-3 py-1 ${i === 0 ? 'text-primary border-b-2 border-primary' : 'text-gray-500'}`}>{cat}</button>
-                            ))}
+{[
+    { key: "2024", name: "方框上的水紋-系列作品" },
+    { key: "2026", name: "夜光譜曲-系列作品" }
+].map((cat) => (
+    <button
+        key={cat.key}
+        onClick={() => setActiveCategory(cat.key)}
+        className={`text-sm uppercase tracking-wider px-3 py-1 ${
+            activeCategory === cat.key
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-500 hover:text-primary"
+        }`}
+    >
+        {cat.name}
+    </button>
+))}
+
                         </div>
                     </div>
                 </div>
 
-                <main className="max-w-7xl mx-auto px-6 py-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                        {[
-                            { title: "Notes on water traces No. 1", price: "NT$1,3000", year: "2024", img: "work/2024w/0141x32x2cm2024.png" , link: "/work/1" },
-                            { title: "Notes on water traces No. 4", price: "NT$1,3000", year: "2024", img: "work/2024w/0441x32x2cm2024.png" , link: "/work/4" },
-                            { title: "Notes on water traces No. 5", price: "NT$1,3000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
-                            { title: "Notes on water traces No. 11", price: "NT$2,0000", year: "2024", img: "work/2024w/11605x455x2cm2024.png" , link: "/work/11" },
-                            { title: "Notes on water traces No. 6", price: "NT$1,3000", year: "2024", img: "work/2024w/0641x32x2cm2024.png" , link: "/work/6" },
-                            { title: "Notes on water traces No. 7", price: "NT$1,5500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
-                        ].map((item, idx) => (
-                            <Link to={item.link} key={idx} className="group flex flex-col">
-                                <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-sm">
-                                    <img src={item.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={item.title}/>
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                        <span className="bg-white px-6 py-2 text-xs uppercase tracking-widest font-bold">View Detail</span>
-                                    </div>
-                                </div>
-                                <div className="mt-4 flex justify-between items-start">
-                                    <div>
-                                        <h4 className="font-display text-xl text-gray-900 dark:text-white group-hover:text-primary transition-colors">{item.title}</h4>
-                                        <p className="text-sm text-gray-500">{item.year}</p>
-                                    </div>
-                                    <span className={`text-sm font-bold ${item.price === 'Sold' ? 'text-gray-400' : 'text-primary'}`}>{item.price}</span>
-                                </div>
-                            </Link>
-                        ))}
+<main className="max-w-7xl mx-auto px-6 py-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+
+        {works[activeCategory].map((item, idx) => (
+<Link
+  to={item.link}
+  state={{ category: activeCategory }}
+  key={idx}
+  className="group flex flex-col"
+>
+                <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-sm">
+                    <img
+                        src={item.img}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt={item.title}
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span className="bg-white px-6 py-2 text-xs uppercase tracking-widest font-bold">
+                            View Detail
+                        </span>
                     </div>
-                </main>
-            </div>
-        );
+                </div>
+
+                <div className="mt-4 flex justify-between items-start">
+                    <div>
+                        <h4 className="font-display text-xl text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                            {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-500">{item.year}</p>
+                    </div>
+
+                    <span
+                        className={`text-sm font-bold ${
+                            item.price === "Sold"
+                                ? "text-gray-400"
+                                : "text-primary"
+                        }`}
+                    >
+                        {item.price}
+                    </span>
+                </div>
+            </Link>
+        ))}
+
+    </div>
+</main>
+    </div>
+    );
+};
 
 
 
@@ -293,7 +406,8 @@ const Navigation = () => {
 const WorkDetailPage = () => {
 
   const [activeIndex, setActiveIndex] = useState(null);
-  const { id } = useParams();
+const { id } = useParams();
+const location = useLocation();
 
   const works = {
     "1": {
@@ -424,6 +538,117 @@ The image evokes a sense of weight and compression, as if the city is being cont
     },
 
 
+
+
+
+
+"101": {
+  title: "夜光譜曲 No.1",
+  year: "2017",
+  price: "NT$78,000",
+  img: "work/2024w/01130x97cm,2017.jpg",
+  gallery: [
+   
+  ],
+  desc: `EN:
+This work explores the reversal of perception through an inverted visual system. What first appears as a pale aerial landscape transforms into a luminous night city when viewed through its negative image. Rather than documenting reality, the painting questions how reality is constructed through the act of seeing. Day and night, presence and absence, visibility and concealment become interchangeable, inviting viewers to experience the city through two parallel visual realities.
+
+中文：
+本作品透過負片影像建立一種翻轉觀看的方式。畫面初看是一座近乎消融的白晝城市，當轉換為負片時，卻浮現出燈火閃爍的夜晚都市。作品並非描繪兩座不同的城市，而是探討觀看如何重新建構現實。白晝與黑夜、顯現與隱藏、真實與虛像彼此交錯，形成兩個同時存在的城市景觀，引導觀者重新思考影像與真實之間的關係。`
+},
+
+"102": {
+  title: "夜光譜曲 No.2",
+  year: "2017",
+  price: "NT$42,000",
+  img: "work/2024w/0491x92.5cm,2016.jpg",
+  gallery: [
+  
+  ],
+  desc: `EN:
+Beginning with an aerial perspective, this work reconstructs roads, interchanges, and architectural structures into an abstract composition of lines and luminous points. The inverted image is not merely a reversal of color, but a transformation of perception, allowing day and night, reality and illusion, to coexist within the same city.
+
+The intertwined transportation network becomes a flowing rhythm, while scattered lights emerge as the pulse of the urban landscape. Through this shifting visual language, the work invites viewers to rediscover a hidden city that exists beneath familiar appearances.
+
+中文：
+以俯瞰城市的視角作為起點，作品將道路、交流道與建築重新拆解為抽象的線條與光點。負片轉換並非單純改變色彩，而是一種觀看方式的翻轉，使白晝與夜晚、真實與虛像在同一座城市中交疊存在。
+
+縱橫交錯的交通網絡如同流動的脈絡，散落的光點則化為城市的節奏。作品試圖捕捉都市持續生成的能量，讓觀者在熟悉的景觀中，重新發現另一種隱藏於光影之中的城市樣貌。`
+},
+
+"103": {
+  title: "夜光譜曲 No.3",
+  year: "2017",
+  price: "NT$131,500",
+  img: "work/2024w/01166x122cm,2018.jpg",
+  gallery: [
+   
+  ],
+  desc: `EN:
+Beginning with an aerial perspective, this work gradually deconstructs roads, architecture, and traces of everyday movement into delicate points of light, subtle colors, and flowing textures. The city no longer exists as a clearly defined landscape but dissolves into an abstract field suspended between reality and memory.
+
+The expanses of pale space are not emptiness, but quiet intervals shaped by the passage of time. Scattered colors and luminous marks suggest the subtle pulse of an ever-changing city. Rather than depicting the appearance of the urban environment, the work explores the hidden rhythms and traces that quietly persist beneath its visible surface.
+
+中文：
+作品以俯瞰城市的視角為起點，將道路、建築與生活軌跡逐漸解構，轉化為細微的光點、色塊與流動紋理。城市不再以清晰的輪廓存在，而是在層層覆蓋的筆觸中緩慢消融，形成介於真實與記憶之間的抽象景觀。
+
+畫面中的留白並非空缺，而是時間流逝後留下的沉靜空間；零散的色彩與光點則如同城市持續運行的微弱脈動。作品試圖描繪的不只是都市的外在樣貌，而是那些難以被看見、卻始終存在於城市深處的節奏與痕跡。`
+},
+
+"104": {
+  title: "夜光譜曲 No.4",
+  year: "2017",
+  price: "NT$104,000",
+  img: "work/2024w/05146x112cm,2017.jpg",
+  gallery: [
+ 
+  ],
+  desc: `EN:
+Inspired by an aerial night view of Daan Forest Park in Taipei, this work reinterprets the city through a bird’s-eye perspective. Roads, city blocks, and buildings are gradually detached from their original functions and scale, transforming into intersecting lines, luminous points, and geometric structures that exist between representation and abstraction.
+
+The park at the center becomes a quiet void within the urban fabric, while the surrounding streets and buildings expand like an intricate network. Through distance and the passage of time, the familiar city is transformed into a visual landscape woven from light, rhythm, and memory.
+
+中文：
+本作品以俯瞰台北大安森林公園的夜景為發想，透過高空視角重新觀看城市的組成。道路、街廓與建築在畫面中逐漸抽離原有的功能與尺度，轉化為交錯延伸的線條、光點與幾何結構，形成介於真實景觀與抽象圖譜之間的視覺語言。
+
+畫面中央的森林公園如同城市中的留白，周圍密集的街道與建築則宛如不斷擴散的脈絡。作品試圖探索都市空間在距離與時間轉換下的樣貌，使熟悉的城市不再只是地理空間，而是一種由光線、節奏與記憶共同編織而成的視覺景觀。`
+},
+
+"105": {
+  title: "夜光譜曲 No.5",
+  year: "2017",
+  price: "NT$161,000",
+  img: "work/2024w/07240x103cm,2014.jpg",
+  gallery: [
+ 
+  ],
+  desc: `EN:
+An aerial city gradually dissolves into subtle points of light, imagining an urban landscape beyond physical reality that transcends time and place.
+
+中文：
+本作品以俯瞰城市為創作起點，試圖想像一座不存在於現實中的城市景觀。畫面中的道路、建築與燈火逐漸消融，只留下若隱若現的光點與柔和色層，如同一座超越地理與時間的城市。`
+},
+
+"106": {
+  title: "夜光譜曲 No.6",
+  year: "2017",
+  price: "NT$6,850",
+  img: "work/2024w/05,41x24cm,2014.jpg",
+  gallery: [
+  
+  ],
+  desc: `EN:
+Beginning with an aerial perspective of the city, this work gradually dissolves familiar streets, buildings, and landscapes into subtle points of light and delicate layers of color. As the city's physical contours fade, the image moves beyond geographical reality and transforms into a landscape suspended between presence and disappearance.
+
+The faint appearance of a bird resting on a branch introduces the quiet persistence of nature. As the structures of the city recede, what remains is not only light but also a sense of life returning to its essence. The scattered points of light become traces of memory, time, and hope, unfolding across an open expanse where the boundaries between city and nature dissolve into a luminous landscape beyond time and space.
+
+中文：
+本作品以俯瞰城市為創作起點，將熟悉的街道、建築與地景逐漸消融，只留下細微的光點與柔和的色彩層次。當城市的輪廓逐漸隱沒，畫面開始脫離具體的地理空間，轉化為一處介於存在與消逝之間的景觀。
+
+作品中隱約浮現的小鳥與樹枝，象徵自然生命的持續存在。當人造的秩序逐漸退去，留下的不只是光，也是一種回歸生命本質的寧靜。那些散落於畫面中的光點，如同記憶、時間與希望的痕跡，在無垠的留白中靜靜延展，使城市與自然不再彼此對立，而是在另一種觀看方式中，共同構築一座超越時間與空間的光之景觀。`
+}
+
+
   };
 
   const work = works[id];
@@ -459,7 +684,15 @@ The image evokes a sense of weight and compression, as if the city is being cont
 
       {/* 麵包屑 */}
       <div className="mb-8 text-xs tracking-widest uppercase text-gray-500">
-        <Link to="/gallery">Portfolio</Link>
+<Link
+  to="/gallery"
+  state={{
+    category:
+      (location.state && location.state.category) || "2024"
+  }}
+>
+  Portfolio
+</Link>
         <span className="mx-2">/</span>
         <span>{work.title}</span>
       </div>
