@@ -477,6 +477,9 @@ const location = useLocation();
     "1": {
       title: "方框上的水紋-1",
       year: "2023",
+       size: "41x32x2cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$13,000",
       img: "work/2024w/0141x32x2cm2024.png",
       gallery: [
@@ -498,6 +501,9 @@ The rigid grid overlays this organic flow, creating a quiet dialogue between con
     "4": {
       title: "方框上的水紋-4",
       year: "2024",
+        size: "41x32x2cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$13,000",
       img: "work/2024w/0441x32x2cm2024.png",
       gallery: [
@@ -516,6 +522,9 @@ This work extends the exploration of layered textures and rhythmic structures. T
     "5": {
       title: "方框上的水紋-5",
       year: "2024",
+      size: "41x32x2cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$13,000",
       img: "work/2024w/0541x32x2cm2024.png",
       gallery: [
@@ -537,6 +546,9 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
         "6": {
       title: "方框上的水紋-6",
       year: "2024",
+       size: "41x32x2cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$13,000",
       img: "work/2024w/0641x32x2cm2024.png",
       gallery: [
@@ -558,6 +570,9 @@ The composition suggests a state of suspended movement—where order and fluidit
      "7": {
       title: "方框上的水紋-7",
       year: "2024",
+       size: "44.5x34.5x5cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$15,500",
       img: "work/2024w/07445x345x5cm2024.png",
       gallery: [
@@ -581,6 +596,9 @@ Within this intensity, moments of subtle color emerge, suggesting fleeting pause
          "11": {
       title: "方框上的水紋-11",
       year: "2024",
+        size: "60.5x45.5x2cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
       price: "NT$20,000",
       img: "work/2024w/11605x455x2cm2024.png",
       gallery: [
@@ -609,6 +627,9 @@ The image evokes a sense of weight and compression, as if the city is being cont
 "101": {
   title: "夜光譜曲 No.1",
   year: "2017",
+  size: "130 × 97 cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$78,000",
   img: "work/2024w/01130x97cm,2017.jpg",
   gallery: [
@@ -629,6 +650,9 @@ Rather than presenting two different landscapes, the work explores how perceptio
 "102": {
   title: "夜光譜曲 No.2",
   year: "2017",
+  size: "91x72.5cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$42,000",
   img: "work/2024w/0491x92.5cm,2016.jpg",
   gallery: [
@@ -649,6 +673,9 @@ The intertwined transportation network becomes a flowing rhythm, while scattered
 "103": {
   title: "夜光譜曲 No.3",
   year: "2017",
+  size: "166x122cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$131,500",
   img: "work/2024w/01166x122cm,2018.jpg",
   gallery: [
@@ -669,6 +696,9 @@ The expanses of pale space are not emptiness, but quiet intervals shaped by the 
 "104": {
   title: "夜光譜曲 No.4",
   year: "2017",
+  size: "146x112cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$104,000",
   img: "work/2024w/05146x112cm,2017.jpg",
   gallery: [
@@ -689,6 +719,9 @@ The park at the center becomes a quiet void within the urban fabric, while the s
 "105": {
   title: "夜光譜曲 No.5",
   year: "2017",
+  size: "240x103cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$161,000",
   img: "work/2024w/07240x103cm,2014.jpg",
   gallery: [
@@ -704,6 +737,9 @@ An aerial city gradually dissolves into subtle points of light, imagining an urb
 "106": {
   title: "夜光譜曲 No.6",
   year: "2017",
+  size: "41x24cm",
+  medium: "Acrylic on canvas",
+  mediumZh: "壓克力顏料、畫布",
   price: "NT$6,850",
   img: "work/2024w/05,41x24cm,2014.jpg",
   gallery: [
@@ -806,18 +842,39 @@ The faint appearance of a bird resting on a branch introduces the quiet persiste
     {work.title}
   </h1>
 
-  {/* 年代 + 價格 */}
-  <div className="space-y-1 text-sm tracking-wide">
-    <p className="text-gray-500 dark:text-gray-400">
-      {work.year}
-    </p>
-
-    <p className="text-lg text-gray-900 dark:text-white font-medium">
-      {work.price}
-    </p>
+{/* 作品資訊 */}
+<div className="space-y-1 text-sm tracking-wide">
 
  
-  </div>
+
+  {work.size && (
+    <p className="text-gray-500 dark:text-gray-400">
+      {work.size}
+    </p>
+  )}
+
+  {work.medium && (
+    <p className="text-gray-500 dark:text-gray-400">
+      {work.medium}
+    </p>
+  )}
+
+  {work.mediumZh && (
+    <p className="text-gray-500 dark:text-gray-400">
+      {work.mediumZh}
+    </p>
+  )}
+
+ <p className="text-gray-500 dark:text-gray-400">
+    {work.year}
+  </p>
+
+
+  <p className="pt-2 text-lg text-gray-900 dark:text-white font-medium">
+    {work.price}
+  </p>
+
+</div>
 
 
 
