@@ -1597,22 +1597,41 @@ const ArtAdvisorPage = () => {
             const handleSubmit = async (e) => {
                 e.preventDefault();
                 const form = e.target;
-                const data = new FormData(form);
-                setStatus("Sending...");
-                
-                // 這裡使用了您提供的 Formspree ID
-                const response = await fetch("https://formspree.io/f/xzebagbv", {
-                    method: "POST",
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
+const data = new FormData(form);
 
-                if (response.ok) {
-                    setStatus("SUCCESS");
-                    form.reset();
-                } else {
-                    setStatus("ERROR");
-                }
+// Art Advisor 帶入的收藏資料
+const artwork = data.get("artwork");
+const intent = data.get("intent");
+const message = data.get("message");
+
+// 如果是作品收藏詢價，把資訊拆成 Formspree 可辨識欄位
+if (intent === "Collection inquiry") {
+    data.set("inquiry_type", "Artwork Collection Inquiry");
+
+    if (artwork) {
+        data.set("artwork_title", artwork);
+    }
+
+    // 保留原始 message，不破壞目前前台顯示內容
+    data.set("message", message || "");
+}
+
+setStatus("Sending...");
+
+const response = await fetch("https://formspree.io/f/xzebagbv", {
+    method: "POST",
+    body: data,
+    headers: {
+        "Accept": "application/json"
+    }
+});
+
+if (response.ok) {
+    setStatus("SUCCESS");
+    form.reset();
+} else {
+    setStatus("ERROR");
+}
             };
 
             return (
@@ -1639,7 +1658,9 @@ const ArtAdvisorPage = () => {
                                     </button>
                                     
                                     {/* 狀態顯示 */}
-                                    {status === "SUCCESS" && <p className="text-green-600 font-bold mt-2 text-center text-sm">✓ Thank you! Message sent to peiju1011@gmail.com.</p>}
+                                    {status === "SUCCESS" && <p className="text-green-600 font-bold mt-2 text-center text-sm">
+    ✓ 洽詢已成功送出。Inquiry submitted successfully.
+  </p>}
                                     {status === "ERROR" && <p className="text-red-600 font-bold mt-2 text-center text-sm">✕ Oops! Please try again or email directly.</p>}
                                 </form>
 
