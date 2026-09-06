@@ -1604,7 +1604,7 @@ const artwork = data.get("artwork");
 const intent = data.get("intent");
 const message = data.get("message");
 
-// 如果是作品收藏詢價，把資訊拆成 Formspree 可辨識欄位
+// Art Advisor 收藏詢價
 if (intent === "Collection inquiry") {
     data.set("inquiry_type", "Artwork Collection Inquiry");
 
@@ -1612,13 +1612,18 @@ if (intent === "Collection inquiry") {
         data.set("artwork_title", artwork);
     }
 
-    // 保留原始 message，不破壞目前前台顯示內容
     data.set("message", message || "");
 }
 
+// 分流 Formspree
+const endpoint =
+    intent === "Collection inquiry"
+        ? "https://formspree.io/f/meaqlkal"
+        : "https://formspree.io/f/xzebagbv";
+
 setStatus("Sending...");
 
-const response = await fetch("https://formspree.io/f/xzebagbv", {
+const response = await fetch(endpoint, {
     method: "POST",
     body: data,
     headers: {
