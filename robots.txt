@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://peiju1011-wq.github.io/PEIRUHUANG/sitemap.xml
