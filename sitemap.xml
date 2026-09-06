@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://peiju1011-wq.github.io/PEIRUHUANG/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <url>
+        <loc>https://peiju1011-wq.github.io/PEIRUHUANG/</loc>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/0141x32x2cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-1</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/0441x32x2cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-4</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/0541x32x2cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-5</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/0641x32x2cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-6</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/07445x345x5cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-7</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/11605x455x2cm2024.png</image:loc>
+            <image:title>黃珮如 Peiru Huang｜方框上的水紋-11</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/01130x97cm,2017.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.1</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/0491x92.5cm,2016.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.2</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/01166x122cm,2018.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.3</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/05146x112cm,2017.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.4</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/07240x103cm,2014.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.5</image:title>
+        </image:image>
+
+        <image:image>
+            <image:loc>https://peiju1011-wq.github.io/PEIRUHUANG/work/2024w/05,41x24cm,2014.jpg</image:loc>
+            <image:title>黃珮如 Peiru Huang｜夜光譜曲 No.6</image:title>
+        </image:image>
+
+    </url>
+
 </urlset>
