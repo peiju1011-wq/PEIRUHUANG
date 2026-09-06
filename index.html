@@ -177,7 +177,7 @@ const Navigation = () => {
                         <img src="work/cv/logo01.svg" alt="Logo" className="h-8 md:h-12 w-auto dark:hidden" />
                         <img src="work/cv/logo02.png" alt="Logo" className="h-8 md:h-12 w-auto hidden dark:block" />
                         <h2 className="text-gray-900 dark:text-white text-lg md:text-2xl font-bold tracking-tight uppercase">
-                            Huang Peiru
+                            PEIRU HUANG
                         </h2>
                     </Link>
 
@@ -223,6 +223,13 @@ const Navigation = () => {
         </Link>
 
         <Link
+            to="/advisor"
+            className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap"
+        >
+            Art Advisor
+        </Link>
+
+        <Link
             to="/contact"
             className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0"
         >
@@ -263,11 +270,35 @@ const Navigation = () => {
                     </div>
                     <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                         <div className="glass-panel p-10 md:p-16 rounded-xl animate-fade-in">
-                            <h1 className="font-display text-5xl md:text-8xl text-white font-light tracking-tight mb-4">Huang Peiru</h1>
+                            <h1 className="font-display text-5xl md:text-8xl text-white font-light tracking-tight mb-4">PEIRU HUANG</h1>
                             <div className="w-24 h-1 bg-white/70 mx-auto my-6 rounded-full"></div>
                             <h2 className="font-body text-lg text-white/90 font-light tracking-[0.2em] uppercase">Abstract Reflections & Textures</h2>
-                            <div className="mt-10">
-                                <Link to="/gallery" className="inline-block border border-white text-white px-8 py-3 rounded-sm hover:bg-white hover:text-gray-900 transition-all duration-300 uppercase tracking-widest text-sm font-medium">View Collection</Link>
+                            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
+                                <Link
+                                    to="/gallery"
+                                    className="group min-w-[220px] border border-white/80 text-white px-7 py-3.5 rounded-sm hover:bg-white hover:text-gray-900 transition-all duration-300"
+                                >
+                                    <span className="flex items-center justify-center gap-3">
+                                        <span className="text-left leading-tight">
+                                            <span className="block text-[15px] font-medium tracking-[0.14em]">系列作品</span>
+                                            <span className="block mt-1 text-[10px] tracking-[0.24em] uppercase opacity-75">View Collection</span>
+                                        </span>
+                                        <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+                                    </span>
+                                </Link>
+
+                                <Link
+                                    to="/advisor"
+                                    className="group min-w-[220px] bg-white text-gray-900 px-7 py-3.5 rounded-sm border border-white hover:bg-white/90 transition-all duration-300 shadow-sm"
+                                >
+                                    <span className="flex items-center justify-center gap-3">
+                                        <span className="text-left leading-tight">
+                                            <span className="block text-[15px] font-medium tracking-[0.14em]">收藏推薦</span>
+                                            <span className="block mt-1 text-[10px] tracking-[0.22em] uppercase text-gray-500">Art Advisor</span>
+                                        </span>
+                                        <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -331,53 +362,53 @@ const Navigation = () => {
 
 const works = {
   "2024": [
-    { title: "Notes on water traces No. 1", price: "NT$13,000", year: "2024", img: "work/2024w/0141x32x2cm2024.png", link: "/work/1" },
-    { title: "Notes on water traces No. 4", price: "NT$13,000", year: "2024", img: "work/2024w/0441x32x2cm2024.png", link: "/work/4" },
-    { title: "Notes on water traces No. 5", price: "NT$13,000", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
-    { title: "Notes on water traces No. 11", price: "NT$20,000", year: "2024", img: "work/2024w/11605x455x2cm2024.png", link: "/work/11" },
-    { title: "Notes on water traces No. 6", price: "NT$13,000", year: "2024", img: "work/2024w/0641x32x2cm2024.png", link: "/work/6" },
-    { title: "Notes on water traces No. 7", price: "NT$15,500", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
+    { title: "Notes on water traces No. 1", price: "Private", year: "2024", img: "work/2024w/0141x32x2cm2024.png", link: "/work/1" },
+    { title: "Notes on water traces No. 4", price: "Private", year: "2024", img: "work/2024w/0441x32x2cm2024.png", link: "/work/4" },
+    { title: "Notes on water traces No. 5", price: "Private", year: "2024", img: "work/2024w/0541x32x2cm2024.png", link: "/work/5" },
+    { title: "Notes on water traces No. 11", price: "Private", year: "2024", img: "work/2024w/11605x455x2cm2024.png", link: "/work/11" },
+    { title: "Notes on water traces No. 6", price: "Private", year: "2024", img: "work/2024w/0641x32x2cm2024.png", link: "/work/6" },
+    { title: "Notes on water traces No. 7", price: "Private", year: "2024", img: "work/2024w/07445x345x5cm2024.png", link: "/work/7" },
   ],
 
 "2026": [
   {
     title: "夜光譜曲 No.1",
-    price: "NT$78,000",
+    price: "Private",
     year: "2017",
     img: "work/2024w/01130x97cm,2017.jpg",
     link: "/work/101"
   },
   {
     title: "夜光譜曲 No.2",
-    price: "NT$42,000",
+    price: "Private",
     year: "2017",
     img: "work/2024w/0491x92.5cm,2016.jpg",
     link: "/work/102"
   },
   {
     title: "夜光譜曲 No.3",
-    price: "NT$135,500",
+    price: "Private",
     year: "2017",
     img: "work/2024w/01166x122cm,2018.jpg",
     link: "/work/103"
   },
   {
     title: "夜光譜曲 No.4",
-    price: "NT$104,000",
+    price: "Private",
     year: "2017",
     img: "work/2024w/05146x112cm,2017.jpg",
     link: "/work/104"
   },
   {
     title: "夜光譜曲 No.5",
-    price: "NT$161,000",
+    price: "Private",
     year: "2017",
     img: "work/2024w/07240x103cm,2014.jpg",
     link: "/work/105"
   },
   {
     title: "夜光譜曲 No.6",
-    price: "NT$6,850",
+    price: "Private",
     year: "2017",
     img: "work/2024w/05,41x24cm,2014.jpg",
     link: "/work/106"
@@ -489,13 +520,13 @@ const GalleryPage = () => {
                     </div>
 
                     <span
-                        className={`text-sm font-bold ${
+                        className={`text-xs uppercase tracking-widest font-medium ${
                             item.price === "Sold"
                                 ? "text-gray-400"
-                                : "text-primary"
+                                : "text-gray-500 dark:text-gray-400"
                         }`}
                     >
-                        {item.price}
+                        {item.price === "Sold" ? "Sold" : "Available"}
                     </span>
                 </div>
             </Link>
@@ -524,7 +555,7 @@ const location = useLocation();
        size: "41x32x2cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$13,000",
+      price: "Private",
       img: "work/2024w/0141x32x2cm2024.png",
       gallery: [
         "work/2024w/01-1.jpg",
@@ -547,7 +578,7 @@ The rigid grid overlays this organic flow, creating a quiet dialogue between con
         size: "41x32x2cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$13,000",
+      price: "Private",
       img: "work/2024w/0441x32x2cm2024.png",
       gallery: [
         "work/2024w/04-1.png",
@@ -567,7 +598,7 @@ This work extends the exploration of layered textures and rhythmic structures. T
       size: "41x32x2cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$13,000",
+      price: "Private",
       img: "work/2024w/0541x32x2cm2024.png",
       gallery: [
         "work/2024w/05-1.png",
@@ -590,7 +621,7 @@ Layers of color blend and dissolve, suggesting a state where boundaries become l
        size: "41x32x2cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$13,000",
+      price: "Private",
       img: "work/2024w/0641x32x2cm2024.png",
       gallery: [
         "work/2024w/06-1.jpg",
@@ -614,7 +645,7 @@ The composition suggests a state of suspended movement—where order and fluidit
        size: "44.5x34.5x5cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$15,500",
+      price: "Private",
       img: "work/2024w/07445x345x5cm2024.png",
       gallery: [
         "work/2024w/07-1.jpg",
@@ -639,7 +670,7 @@ Within this intensity, moments of subtle color emerge, suggesting fleeting pause
         size: "60.5x45.5x2cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-      price: "NT$20,000",
+      price: "Private",
       img: "work/2024w/11605x455x2cm2024.png",
       gallery: [
         "work/2024w/11-1.jpg",
@@ -669,7 +700,7 @@ The image evokes a sense of weight and compression, as if the city is being cont
   size: "130 × 97 cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$78,000",
+  price: "Private",
   img: "work/2024w/01130x97cm,2017.jpg",
   gallery: [
     "work/2024w/0726-01130x97cm,2017.png",
@@ -692,7 +723,7 @@ Rather than presenting two different landscapes, the work explores how perceptio
   size: "91x72.5cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$42,000",
+  price: "Private",
   img: "work/2024w/0491x92.5cm,2016.jpg",
   gallery: [
    "work/2024w/0726-0491x92.5cm,2016.png",
@@ -715,7 +746,7 @@ The intertwined transportation network becomes a flowing rhythm, while scattered
   size: "166x122cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$131,500",
+  price: "Private",
   img: "work/2024w/01166x122cm,2018.jpg",
   gallery: [
     "work/2024w/0726-01166x122cm,2018.png",
@@ -738,7 +769,7 @@ The expanses of pale space are not emptiness, but quiet intervals shaped by the 
   size: "146x112cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$104,000",
+  price: "Private",
   img: "work/2024w/05146x112cm,2017.jpg",
   gallery: [
  "work/2024w/0726-05146x112cm,2017.png",
@@ -761,7 +792,7 @@ The park at the center becomes a quiet void within the urban fabric, while the s
   size: "240x103cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$161,000",
+  price: "Private",
   img: "work/2024w/07240x103cm,2014.jpg",
   gallery: [
  
@@ -779,7 +810,7 @@ An aerial city gradually dissolves into subtle points of light, imagining an urb
   size: "41x24cm",
   medium: "Acrylic on canvas",
   mediumZh: "壓克力顏料、畫布",
-  price: "NT$6,850",
+  price: "Private",
   img: "work/2024w/05,41x24cm,2014.jpg",
   gallery: [
   
@@ -909,8 +940,8 @@ The faint appearance of a bird resting on a branch introduces the quiet persiste
   </p>
 
 
-  <p className="pt-2 text-lg text-gray-900 dark:text-white font-medium">
-    {work.price}
+  <p className="pt-2 text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-medium">
+    {work.price === "Sold" ? "Sold" : "Available · Price on request"}
   </p>
 
 </div>
@@ -930,28 +961,22 @@ The faint appearance of a bird resting on a branch introduces the quiet persiste
   <div className="w-10 h-[1px] bg-gray-300 dark:bg-gray-700" />
 
   {/* 按鈕 */}
-  <Link
-    to="/contact"
-    className="
-      inline-block
-      px-6 py-2
-
-      bg-[#2070DF]
-      text-white
-
-      text-[11px] tracking-[0.25em] font-medium
-
-      rounded-md
-
-      transition-all duration-300 ease-out
-
-      hover:bg-[#1a5fc2]
-      hover:shadow-md
-      active:scale-[0.97]
-    "
-  >
-    INQUIRE
-  </Link>
+  <div className="flex flex-wrap gap-3">
+    <Link
+      to="/contact"
+      state={{ workTitle: work.title, intent: "Collection inquiry" }}
+      className="inline-block px-6 py-2 bg-[#2070DF] text-white text-[11px] tracking-[0.25em] font-medium rounded-md transition-all duration-300 ease-out hover:bg-[#1a5fc2] hover:shadow-md active:scale-[0.97]"
+    >
+      INQUIRE
+    </Link>
+    <Link
+      to="/advisor"
+      state={{ workTitle: work.title }}
+      className="inline-block px-6 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-[11px] tracking-[0.18em] font-medium rounded-md transition hover:border-[#2070DF] hover:text-[#2070DF]"
+    >
+      ASK ART ADVISOR
+    </Link>
+  </div>
 
   {/* Email */}
 <a
@@ -1172,8 +1197,159 @@ The faint appearance of a bird resting on a branch introduces the quiet persiste
             </div>
         );
 
+
+const ArtAdvisorPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [room, setRoom] = useState("living");
+  const [mood, setMood] = useState("quiet");
+  const [scale, setScale] = useState("medium");
+  const [budget, setBudget] = useState("prefer-private");
+  const [note, setNote] = useState("");
+  const [results, setResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const advisorWorks = [
+    { id:"1", title:"方框上的水紋-1", img:"work/2024w/0141x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"] },
+    { id:"4", title:"方框上的水紋-4", img:"work/2024w/0441x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"] },
+    { id:"5", title:"方框上的水紋-5", img:"work/2024w/0541x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","soft"], rooms:["study","bedroom"] },
+    { id:"6", title:"方框上的水紋-6", img:"work/2024w/0641x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["textural","minimal","structured"], rooms:["study","living"] },
+    { id:"7", title:"方框上的水紋-7", img:"work/2024w/07445x345x5cm2024.png", size:"44.5×34.5×5 cm", width:44.5, moods:["textural","soft","quiet"], rooms:["bedroom","study","living"] },
+    { id:"11", title:"方框上的水紋-11", img:"work/2024w/11605x455x2cm2024.png", size:"60.5×45.5×2 cm", width:60.5, moods:["textural","structured","quiet"], rooms:["living","office","study"] },
+    { id:"101", title:"夜光譜曲 No.1", img:"work/2024w/01130x97cm,2017.jpg", size:"130×97 cm", width:130, moods:["luminous","urban","quiet"], rooms:["living","office","dining"] },
+    { id:"102", title:"夜光譜曲 No.2", img:"work/2024w/0491x92.5cm,2016.jpg", size:"91×72.5 cm", width:91, moods:["urban","dynamic","luminous"], rooms:["living","office","dining"] },
+    { id:"103", title:"夜光譜曲 No.3", img:"work/2024w/01166x122cm,2018.jpg", size:"166×122 cm", width:166, moods:["quiet","luminous","expansive"], rooms:["living","office","lobby"] },
+    { id:"104", title:"夜光譜曲 No.4", img:"work/2024w/05146x112cm,2017.jpg", size:"146×112 cm", width:146, moods:["urban","structured","luminous"], rooms:["living","office","lobby"] },
+    { id:"105", title:"夜光譜曲 No.5", img:"work/2024w/07240x103cm,2014.jpg", size:"240×103 cm", width:240, moods:["expansive","quiet","luminous"], rooms:["lobby","office","living"] },
+    { id:"106", title:"夜光譜曲 No.6", img:"work/2024w/05,41x24cm,2014.jpg", size:"41×24 cm", width:41, moods:["quiet","nature","luminous"], rooms:["bedroom","study","living"] }
+  ];
+
+  const scaleRange = {
+    small: [0, 55],
+    medium: [50, 110],
+    large: [100, 170],
+    statement: [150, 999]
+  };
+
+  const recommend = (e) => {
+    e && e.preventDefault();
+    const [minW, maxW] = scaleRange[scale];
+    const scored = advisorWorks.map((work) => {
+      let score = 0;
+      if (work.rooms.includes(room)) score += 4;
+      if (work.moods.includes(mood)) score += 5;
+      if (work.width >= minW && work.width <= maxW) score += 4;
+      else {
+        const center = (minW + Math.min(maxW, 260)) / 2;
+        score += Math.max(0, 3 - Math.abs(work.width - center) / 45);
+      }
+      if (location.state && location.state.workTitle === work.title) score += 2;
+      return { ...work, score };
+    }).sort((a,b) => b.score - a.score).slice(0,3);
+    setResults(scored);
+    setHasSearched(true);
+  };
+
+  useEffect(() => {
+    if (location.state && location.state.workTitle) recommend();
+  }, []);
+
+  const roomLabel = { living:"客廳", bedroom:"臥室", dining:"餐廳", study:"書房", office:"辦公空間", lobby:"大廳／商業空間" };
+  const moodLabel = { quiet:"安靜、留白", textural:"肌理感", minimal:"簡潔", structured:"秩序與結構", luminous:"光感", urban:"都市感", dynamic:"有動勢", expansive:"開闊、具有存在感", nature:"自然感", soft:"柔和" };
+
+  return (
+    <div className="pt-28 pb-24 min-h-screen bg-[#f7f6f3] dark:bg-background-dark">
+      <main className="max-w-6xl mx-auto px-6">
+        <section className="text-center max-w-3xl mx-auto mb-12">
+          <p className="text-[11px] tracking-[0.28em] uppercase text-primary font-semibold mb-4">Private Art Advisory</p>
+          <h1 className="font-display text-4xl md:text-6xl text-gray-900 dark:text-white mb-5">Find a work for your space</h1>
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">告訴我空間、想要的氛圍與作品尺度，我會先從目前作品中挑出最適合的選擇。作品售價不在網站公開，預算只會用於後續收藏洽詢。</p>
+        </section>
+
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          <form onSubmit={recommend} className="lg:col-span-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 lg:sticky lg:top-36">
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">1. Space / 空間</label>
+              <select value={room} onChange={e=>setRoom(e.target.value)} className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white">
+                <option value="living">客廳 Living room</option><option value="bedroom">臥室 Bedroom</option><option value="dining">餐廳 Dining room</option><option value="study">書房 Study</option><option value="office">辦公空間 Office</option><option value="lobby">大廳／商業空間 Lobby</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">2. Mood / 氛圍</label>
+              <select value={mood} onChange={e=>setMood(e.target.value)} className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white">
+                <option value="quiet">安靜、留白</option><option value="textural">肌理感</option><option value="luminous">光感</option><option value="urban">都市感</option><option value="structured">秩序與結構</option><option value="dynamic">有動勢</option><option value="expansive">開闊、具有存在感</option><option value="nature">自然感</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">3. Scale / 尺度</label>
+              <select value={scale} onChange={e=>setScale(e.target.value)} className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white">
+                <option value="small">小型｜約 55 cm 以下</option><option value="medium">中型｜約 50–110 cm</option><option value="large">大型｜約 100–170 cm</option><option value="statement">主視覺｜150 cm 以上</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">4. Collection budget / 收藏預算</label>
+              <select value={budget} onChange={e=>setBudget(e.target.value)} className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white">
+                <option value="prefer-private">希望私下提供</option><option value="under30">NT$30,000 以下</option><option value="30-80">NT$30,000–80,000</option><option value="80-150">NT$80,000–150,000</option><option value="150plus">NT$150,000 以上</option><option value="open">預算彈性</option>
+              </select>
+              <p className="mt-2 text-[11px] leading-relaxed text-gray-400">預算不會顯示在作品頁，也不會自動公開作品價格。</p>
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Anything else? / 其他需求</label>
+              <textarea value={note} onChange={e=>setNote(e.target.value)} rows="3" placeholder="例如：灰白色客廳、沙發牆約 220 cm，希望畫面不要太鮮豔…" className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white text-sm"></textarea>
+            </div>
+            <button type="submit" className="w-full bg-primary text-white rounded-lg py-3 text-xs font-semibold tracking-[0.18em] uppercase hover:bg-[#1a5fc2] transition">Recommend artworks</button>
+          </form>
+
+          <section className="lg:col-span-8">
+            {!hasSearched ? (
+              <div className="min-h-[460px] border border-dashed border-gray-300 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center px-8 bg-white/40 dark:bg-gray-900/30">
+                <span className="material-symbols-outlined text-5xl text-gray-300 mb-4">auto_awesome</span>
+                <h2 className="font-display text-3xl text-gray-800 dark:text-white mb-3">Your private shortlist</h2>
+                <p className="max-w-md text-sm leading-relaxed text-gray-500">完成左側條件後，系統會依空間、氛圍與尺寸先做第一輪作品配對；之後可直接進入私人洽詢。</p>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed"><span className="font-semibold text-gray-900 dark:text-white">Advisor note：</span>依你選擇的「{roomLabel[room]} × {moodLabel[mood]}」與作品尺度，我會先看這三件。{note ? `你另外提到「${note}」，這段需求也會在洽詢時一起帶給工作室。` : ""}</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-5">
+                  {results.map((work, index) => (
+                    <article key={work.id} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                      <Link to={`/work/${work.id}`}><img src={work.img} alt={work.title} className="w-full aspect-[4/5] object-cover hover:opacity-95 transition" /></Link>
+                      <div className="p-5 flex flex-col flex-1">
+                        <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Recommendation {index+1}</p>
+                        <h3 className="font-display text-xl text-gray-900 dark:text-white leading-tight mb-2">{work.title}</h3>
+                        <p className="text-xs text-gray-500 mb-4">{work.size} · Available · Price on request</p>
+                        <p className="text-xs leading-relaxed text-gray-500 mb-5">適合{roomLabel[room]}，並優先符合你選擇的{moodLabel[mood]}與尺度條件。</p>
+                        <div className="mt-auto space-y-2">
+                          <Link to={`/work/${work.id}`} className="block text-center border border-gray-200 dark:border-gray-700 rounded-lg py-2.5 text-[11px] tracking-widest uppercase text-gray-700 dark:text-gray-200 hover:border-primary hover:text-primary transition">View artwork</Link>
+                          <button type="button" onClick={()=>navigate('/contact',{state:{workTitle:work.title,intent:'Collection inquiry',budget,note:`Recommended for ${roomLabel[room]} / ${moodLabel[mood]}. ${note}`}})} className="w-full bg-primary text-white rounded-lg py-2.5 text-[11px] tracking-widest uppercase hover:bg-[#1a5fc2] transition">Inquire / Collect</button>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+                <div className="rounded-2xl bg-[#ece9e3] dark:bg-gray-900 px-6 py-5 text-xs leading-relaxed text-gray-600 dark:text-gray-400">這一版已可直接使用「智慧導購 → 作品推薦 → 私人詢價」。真正的 GPT 對話可在下一階段接到安全的伺服器端 API；API 金鑰不會放在 GitHub Pages 前端。</div>
+              </div>
+            )}
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+};
+
  const ContactPage = () => {
             const [status, setStatus] = React.useState(""); // 確保使用 React.useState
+            const location = useLocation();
+            const inquiry = (location.state || {});
+            const budgetLabels = {
+              "prefer-private":"希望私下提供", "under30":"NT$30,000 以下", "30-80":"NT$30,000–80,000",
+              "80-150":"NT$80,000–150,000", "150plus":"NT$150,000 以上", "open":"預算彈性"
+            };
+            const defaultMessage = inquiry.workTitle
+              ? `您好，我想洽詢作品「${inquiry.workTitle}」。${inquiry.budget ? `\n收藏預算：${budgetLabels[inquiry.budget] || inquiry.budget}` : ""}${inquiry.note ? `\n空間／需求：${inquiry.note}` : ""}`
+              : "";
 
             const handleSubmit = async (e) => {
                 e.preventDefault();
@@ -1206,7 +1382,15 @@ The faint appearance of a bird resting on a branch introduces the quiet persiste
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <input name="name" required placeholder="Name" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg h-12 px-4 outline-none focus:ring-1 focus:ring-primary" />
                                     <input type="email" name="email" required placeholder="Email" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg h-12 px-4 outline-none focus:ring-1 focus:ring-primary" />
-                                    <textarea name="message" required placeholder="Message" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg p-4 outline-none focus:ring-1 focus:ring-primary" rows="5"></textarea>
+                                    <input type="hidden" name="artwork" value={inquiry.workTitle || ""} />
+                                    <select name="intent" defaultValue={inquiry.intent || "General inquiry"} className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg h-12 px-4 outline-none focus:ring-1 focus:ring-primary">
+                                      <option value="General inquiry">General inquiry / 一般聯絡</option>
+                                      <option value="Collection inquiry">Price inquiry / 作品詢價</option>
+                                      <option value="Purchase request">Purchase request / 收藏購買</option>
+                                      <option value="Studio visit">Studio visit / 預約看畫</option>
+                                      <option value="Exhibition inquiry">Exhibition inquiry / 展覽合作</option>
+                                    </select>
+                                    <textarea name="message" required defaultValue={defaultMessage} placeholder="Message" className="w-full border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white rounded-lg p-4 outline-none focus:ring-1 focus:ring-primary" rows="7"></textarea>
                                     <button type="submit" disabled={status === "Sending..."} className="bg-primary text-white font-bold px-8 py-3 rounded-lg hover:bg-opacity-90 w-full disabled:bg-gray-400 transition-all uppercase tracking-widest text-sm">
                                         {status === "Sending..." ? "Sending..." : "Send Inquiry"}
                                     </button>
@@ -1253,6 +1437,7 @@ const App = () => {
                     <Route path="/work/:id" element={<WorkDetailPage />} />
                     <Route path="/exhibitions" element={<ExhibitionsPage />} />
                     <Route path="/about" element={<AboutPage />} />
+                    <Route path="/advisor" element={<ArtAdvisorPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                 </Routes>
             </div>
