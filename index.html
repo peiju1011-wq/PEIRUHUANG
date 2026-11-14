@@ -367,6 +367,68 @@
         transform: translateY(0);
       }
     }
+
+    /* PEIRU HUANG — Homepage editorial design system (scoped to hero) */
+    .peiru-hero {
+      min-height: 720px;
+      min-height: 100svh;
+      padding: 172px 24px 28px;
+      background: #253a4c;
+      isolation: isolate;
+    }
+    .peiru-hero-media img { transform: scale(1.045); animation: peiruHeroImage 1.8s cubic-bezier(.2,.7,.2,1) both; }
+    .peiru-hero-scrim { background: linear-gradient(115deg,rgba(14,28,39,.64),rgba(28,42,52,.36) 56%,rgba(17,25,35,.42)); }
+    .peiru-hero-shell { max-width: 1240px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; }
+    .peiru-hero-panel {
+      width: min(100%, 790px);
+      text-align: center;
+      color: #fff;
+      padding: clamp(34px,6vw,78px) clamp(22px,6vw,82px);
+      background: rgba(26,39,48,.23);
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 24px;
+      box-shadow: 0 24px 80px rgba(7,15,23,.12), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      animation: peiruHeroReveal 1s cubic-bezier(.2,.75,.25,1) both;
+    }
+    .peiru-hero-eyebrow { display:flex; justify-content:center; align-items:center; gap:16px; font: 500 10px/1.6 Inter,sans-serif; letter-spacing:.25em; color:rgba(255,255,255,.78); }
+    .peiru-hero-eyebrow span { width:32px; height:1px; background:rgba(255,255,255,.52); }
+    .peiru-hero-title { margin: 22px 0 0; font-family: 'Cormorant Garamond',Georgia,serif; font-size:clamp(58px,8.4vw,104px); font-weight:400; line-height:.98; letter-spacing:-.035em; }
+    .peiru-hero-title span { font-weight:300; }
+    .peiru-hero-rule { width:44px; height:1px; background:rgba(255,255,255,.65); margin:28px auto 20px; }
+    .peiru-hero-subtitle { margin:0; font:400 clamp(12px,1.3vw,15px)/1.7 Inter,sans-serif; letter-spacing:.16em; color:rgba(255,255,255,.88); }
+    .peiru-hero-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; width:min(100%,520px); margin:42px auto 0; }
+    .peiru-hero-cta { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:15px 22px; border:1px solid rgba(255,255,255,.76); border-radius:12px; text-align:left; text-decoration:none; transition:background .35s ease,color .35s ease,border-color .35s ease,transform .35s ease,box-shadow .35s ease; }
+    .peiru-hero-cta-copy { display:flex; flex-direction:column; gap:4px; }
+    .peiru-hero-cta-zh { font:500 15px/1.3 'Noto Sans TC','Noto Sans',sans-serif; letter-spacing:.13em; }
+    .peiru-hero-cta-en { font:600 9px/1.4 Inter,sans-serif; letter-spacing:.24em; opacity:.7; }
+    .peiru-hero-cta-arrow { font-size:21px; transition:transform .35s ease; }
+    .peiru-hero-cta:hover .peiru-hero-cta-arrow,.peiru-hero-cta:focus-visible .peiru-hero-cta-arrow { transform:translateX(5px); }
+    .peiru-hero-cta-outline { background:rgba(255,255,255,.05); color:#fff; }
+    .peiru-hero-cta-outline:hover,.peiru-hero-cta-outline:focus-visible { color:#182a37; background:rgba(255,255,255,.96); border-color:#fff; transform:translateY(-3px); box-shadow:0 10px 30px rgba(10,25,35,.12); }
+    .peiru-hero-cta-solid { background:#fff; color:#1b2935; border-color:#fff; }
+    .peiru-hero-cta-solid:hover,.peiru-hero-cta-solid:focus-visible { background:#e9eef1; border-color:#e9eef1; transform:translateY(-3px); box-shadow:0 10px 30px rgba(10,25,35,.12); }
+    .peiru-hero-cta:focus-visible { outline:2px solid #fff; outline-offset:4px; }
+    .peiru-hero-bottom { display:flex; justify-content:space-between; width:100%; margin-top:42px; color:rgba(255,255,255,.8); font:500 10px/1.5 Inter,sans-serif; letter-spacing:.15em; }
+    .peiru-hero-bottom > span:last-child { display:flex; gap:15px; }
+    @keyframes peiruHeroReveal { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes peiruHeroImage { from { opacity:.6; transform:scale(1.08); } to { opacity:1; transform:scale(1.045); } }
+    @media (max-width:640px) {
+      .peiru-hero { min-height:100svh; padding:160px 18px 22px; }
+      .peiru-hero-panel { border-radius:20px; padding:44px 22px; }
+      .peiru-hero-title { font-size:clamp(54px,12vw,75px); }
+      .peiru-hero-eyebrow { font-size:9px; letter-spacing:.16em; gap:10px; }
+      .peiru-hero-eyebrow span { width:19px; }
+      .peiru-hero-subtitle { font-size:11px; letter-spacing:.1em; }
+      .peiru-hero-actions { grid-template-columns:1fr; gap:10px; margin-top:34px; }
+      .peiru-hero-cta { min-height:66px; padding:13px 19px; border-radius:12px; }
+      .peiru-hero-bottom { margin-top:24px; font-size:8px; letter-spacing:.08em; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .peiru-hero-panel,.peiru-hero-media img { animation:none; }
+      .peiru-hero-cta,.peiru-hero-cta-arrow { transition:none; }
+    }
   </style>
 </head>
 
@@ -387,6 +449,24 @@
     </main>
   </noscript>
 
+  <style>
+    /* Mobile editorial navigation: near-opaque glass, readable over page content. */
+    .peiru-mobile-menu {
+      background: rgba(251, 250, 248, .97);
+      -webkit-backdrop-filter: blur(22px) saturate(115%);
+      backdrop-filter: blur(22px) saturate(115%);
+      box-shadow: 0 18px 32px rgba(29, 35, 48, .12);
+      isolation: isolate;
+    }
+    .dark .peiru-mobile-menu {
+      background: rgba(24, 28, 35, .97);
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .peiru-mobile-menu { background: #fbfaf8; -webkit-backdrop-filter: none; backdrop-filter: none; }
+      .dark .peiru-mobile-menu { background: #181c23; }
+    }
+  </style>
+
   <div id="root"></div>
 
   <script type="text/babel">
@@ -398,91 +478,118 @@ const { HashRouter, Routes, Route, Link, useNavigate, useLocation, useParams } =
         // --- Shared Components ---
 
 const Navigation = () => {
-    const [activeIndex, setActiveIndex] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+    useEffect(() => { setMobileMenuOpen(false); }, [location.pathname]);
+    // Collapse the mobile navigation when the page is scrolled down or swiped.
+    useEffect(() => {
+        if (!mobileMenuOpen) return;
+        let lastY = window.scrollY;
+        let touchStartY = null;
+        const closeOnDownScroll = () => {
+            const nowY = window.scrollY;
+            if (nowY > lastY + 2) setMobileMenuOpen(false);
+            lastY = nowY;
+        };
+        const closeOnWheel = (event) => {
+            if (event.deltaY > 3) setMobileMenuOpen(false);
+        };
+        const onTouchStart = (event) => {
+            if (event.touches.length === 1) touchStartY = event.touches[0].clientY;
+        };
+        const onTouchMove = (event) => {
+            if (touchStartY !== null && touchStartY - event.touches[0].clientY > 12) {
+                setMobileMenuOpen(false);
+                touchStartY = null;
+            }
+        };
+        window.addEventListener('scroll', closeOnDownScroll, { passive: true });
+        window.addEventListener('wheel', closeOnWheel, { passive: true });
+        window.addEventListener('touchstart', onTouchStart, { passive: true });
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', closeOnDownScroll);
+            window.removeEventListener('wheel', closeOnWheel);
+            window.removeEventListener('touchstart', onTouchStart);
+            window.removeEventListener('touchmove', onTouchMove);
+        };
+    }, [mobileMenuOpen]);
+    useEffect(() => {
+        if (!mobileMenuOpen) return;
+        const closeOnEscape = (event) => { if (event.key === 'Escape') setMobileMenuOpen(false); };
+        window.addEventListener('keydown', closeOnEscape);
+        return () => window.removeEventListener('keydown', closeOnEscape);
+    }, [mobileMenuOpen]);
 
+    const desktopLinkClass = 'text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap';
+    const mobileLinks = [
+        { to: '/gallery', text: 'Works', zh: '系列作品' },
+        { to: '/exhibitions', text: 'Exhibitions', zh: '展覽資訊' },
+        { to: '/about', text: 'About', zh: '藝術家簡介' },
+        { to: '/advisor', text: 'Art Advisor', zh: '收藏推薦' },
+    ];
     return (
-        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 h-auto py-3 ${
-            isScrolled ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
+        <nav aria-label="Main navigation" className={`fixed w-full z-50 top-0 transition-all duration-300 py-3 ${
+            isScrolled || mobileMenuOpen ? 'bg-white/95 dark:bg-background-dark/95 backdrop-blur-md shadow-sm' : 'bg-white dark:bg-background-dark'
         }`}>
-            {/* 主容器：確保桌機版內容垂直居中 */}
-            <div className="max-w-7xl mx-auto px-5 md:px-10 flex flex-col items-center gap-3 relative">
-                
-                {/* 第一排：Logo 與 名字，以及對齊藍框右緣的亮暗鈕 */}
-                <div className="flex items-center justify-between lg:justify-center w-full relative">
-                    <Link to="/" className="flex items-center gap-3">
-                        <img src="work/cv/logo01.svg" alt="Logo" className="h-8 md:h-12 w-auto dark:hidden" />
-                        <img src="work/cv/logo02.png" alt="Logo" className="h-8 md:h-12 w-auto hidden dark:block" />
-                        <h2 className="text-gray-900 dark:text-white text-lg md:text-2xl font-bold tracking-tight uppercase">
-                            PEIRU HUANG
-                        </h2>
+            <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-10 flex flex-col items-center gap-3 relative">
+                <div className="flex items-center justify-between lg:justify-center w-full relative min-w-0">
+                    <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 sm:gap-3 min-w-0 flex-shrink">
+                        <img src="work/cv/logo01.svg" alt="" className="h-8 md:h-12 w-auto flex-shrink-0 dark:hidden" />
+                        <img src="work/cv/logo02.png" alt="" className="h-8 md:h-12 w-auto flex-shrink-0 hidden dark:block" />
+                        <h2 className="text-gray-900 dark:text-white text-[12px] sm:text-lg md:text-2xl font-bold tracking-tight uppercase whitespace-nowrap">PEIRU HUANG</h2>
                     </Link>
-
-                    {/* 桌機版亮暗鈕：使用 lg:absolute 配合 right-0 確保與下方內容邊界對齊 */}
-                    <div className="lg:absolute lg:right-0">
-                        <button 
-                            onClick={() => document.documentElement.classList.toggle('dark')} 
-                            className="text-gray-600 dark:text-gray-300 p-1 flex items-center"
-                            aria-label="Toggle Dark Mode"
-                        >
-                            <span className="material-icons text-2xl md:text-3xl dark:hidden">dark_mode</span>
-                            <span className="material-icons text-2xl md:text-3xl hidden dark:block">light_mode</span>
+                    <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0 lg:absolute lg:right-0">
+                        <button type="button" onClick={() => document.documentElement.classList.toggle('dark')}
+                            className="text-gray-600 dark:text-gray-300 p-1 flex items-center justify-center"
+                            aria-label="Toggle dark mode">
+                            <span className="material-icons text-[19px] md:text-3xl dark:hidden">dark_mode</span>
+                            <span className="material-icons text-[19px] md:text-3xl hidden dark:block">light_mode</span>
+                        </button>
+                        {/* Mobile: keep CONTACT visible; place the rest in a menu. */}
+                        <Link to="/contact" onClick={() => setMobileMenuOpen(false)}
+                            className="lg:hidden inline-flex items-center justify-center bg-primary hover:bg-[#1a5fc2] text-white rounded-lg px-2.5 sm:px-3 h-9 text-[10px] sm:text-xs font-bold uppercase tracking-wide transition-colors whitespace-nowrap">
+                            Contact
+                        </Link>
+                        <button type="button" aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={mobileMenuOpen} aria-controls="peiru-mobile-menu"
+                            onClick={() => setMobileMenuOpen(open => !open)}
+                            className="lg:hidden inline-flex items-center justify-center h-9 w-9 text-gray-800 dark:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
+                            <span aria-hidden="true" className="material-icons text-[25px]">{mobileMenuOpen ? 'close' : 'menu'}</span>
                         </button>
                     </div>
                 </div>
-
-                {/* 第二排：選單項目 - 桌機版 lg:justify-center 確保整體置中且等距 */}
-<div className="flex items-center justify-between lg:justify-center w-full">
-    {/* 導覽列 */}
-    <div className="flex items-center gap-5 lg:gap-8">
-
-        <Link
-            to="/gallery"
-            className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap"
-        >
-            Works
-        </Link>
-
-      
-
-        <Link
-            to="/exhibitions"
-            className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap"
-        >
-            Exhibitions
-        </Link>
-
-        <Link
-            to="/about"
-            className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap"
-        >
-            About
-        </Link>
-
-        <Link
-            to="/advisor"
-            className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-gray-700 dark:text-gray-300 hover:text-primary transition-colors whitespace-nowrap"
-        >
-            Art Advisor
-        </Link>
-
-        <Link
-            to="/contact"
-            className="bg-primary text-white px-3 py-1.5 rounded text-[11px] md:text-sm font-bold uppercase shadow-md shrink-0"
-        >
-            Contact
-        </Link>
-
-    </div>
-
+                <div className="hidden lg:flex items-center justify-center w-full">
+                    <div className="flex items-center gap-8">
+                        <Link to="/gallery" className={desktopLinkClass}>Works</Link>
+                        <Link to="/exhibitions" className={desktopLinkClass}>Exhibitions</Link>
+                        <Link to="/about" className={desktopLinkClass}>About</Link>
+                        <Link to="/advisor" className={desktopLinkClass}>Art Advisor</Link>
+                        <Link to="/contact" className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold uppercase hover:bg-[#1a5fc2] transition-colors whitespace-nowrap">Contact</Link>
+                    </div>
                 </div>
             </div>
+            {mobileMenuOpen && (
+                <div id="peiru-mobile-menu" className="peiru-mobile-menu lg:hidden absolute top-full inset-x-0 border-t border-gray-200/80 dark:border-gray-700 shadow-xl max-h-[calc(100dvh-72px)] overflow-y-auto">
+                    <div className="px-6 py-5 flex flex-col">
+                        {mobileLinks.map(item => (
+                            <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}
+                                className="flex justify-between items-center gap-4 py-4 border-b border-gray-100 dark:border-gray-700 text-gray-900 dark:text-white hover:text-primary transition-colors">
+                                <span className="text-[19px] uppercase tracking-widest font-medium">{item.text}</span>
+                                <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">{item.zh}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };
@@ -506,44 +613,35 @@ const Navigation = () => {
 
         const HomePage = () => (
             <div className="relative">
-                <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 z-0">
-                        <img alt="Background" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfgmAt7L-_vghNECufeMXK9uDx780fKS2JF4qkdGfbaO5tcYlAvgeI0Q8zhC6555ehHAP75Wt_00sXwQcD7wXa-BJEocdlWrrAaT5BKLv2F157fvEQvGyf_ptUrF00SZ3t6X-SvL6ASZowKLf7TKlksXeyQCfi57U9AFIMA-rIEHOs97EdwmI7b2U7889IlNKwtIr8kMf10UDq8WSR6AscrJmYQsw9ANQntk4cbQO-uiETJCdsk9piCyrY-YNjl9O3gWR76m0P8MM"/>
-                        <div className="absolute inset-0 bg-black/30"></div>
+                <div className="peiru-hero relative w-full flex items-center justify-center overflow-hidden">
+                    <div className="peiru-hero-media absolute inset-0 z-0">
+                        <img alt="Abstract artwork background" className="w-full h-full object-cover" src="work/2024w/04-1.png"/>
+                        <div className="peiru-hero-scrim absolute inset-0"></div>
                     </div>
-                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                        <div className="glass-panel p-10 md:p-16 rounded-xl animate-fade-in">
-                            <h1 className="font-display text-5xl md:text-8xl text-white font-light tracking-tight mb-4">PEIRU HUANG</h1>
-                            <div className="w-24 h-1 bg-white/70 mx-auto my-6 rounded-full"></div>
-                            <h2 className="font-body text-lg text-white/90 font-light tracking-[0.2em] uppercase">Abstract Reflections & Textures</h2>
-                            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
-                                <Link
-                                    to="/gallery"
-                                    className="group min-w-[220px] border border-white/80 text-white px-7 py-3.5 rounded-sm hover:bg-white hover:text-gray-900 transition-all duration-300"
-                                >
-                                    <span className="flex items-center justify-center gap-3">
-                                        <span className="text-left leading-tight">
-                                            <span className="block text-[15px] font-medium tracking-[0.14em]">系列作品</span>
-                                            <span className="block mt-1 text-[10px] tracking-[0.24em] uppercase opacity-75">View Collection</span>
-                                        </span>
-                                        <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+                    <div className="peiru-hero-shell relative z-10 w-full mx-auto">
+                        <div className="peiru-hero-panel">
+                            <div className="peiru-hero-eyebrow">CONTEMPORARY ART <span></span> TAIWAN</div>
+                            <h1 className="peiru-hero-title">PEIRU <span>HUANG</span></h1>
+                            <div className="peiru-hero-rule"></div>
+                            <h2 className="peiru-hero-subtitle">Abstract Reflections &amp; Textures</h2>
+                            <div className="peiru-hero-actions">
+                                <Link to="/gallery" className="peiru-hero-cta peiru-hero-cta-outline group">
+                                    <span className="peiru-hero-cta-copy">
+                                        <span className="peiru-hero-cta-zh">系列作品</span>
+                                        <span className="peiru-hero-cta-en">VIEW COLLECTION</span>
                                     </span>
+                                    <span className="peiru-hero-cta-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                                 </Link>
-
-                                <Link
-                                    to="/advisor"
-                                    className="group min-w-[220px] bg-white text-gray-900 px-7 py-3.5 rounded-sm border border-white hover:bg-white/90 transition-all duration-300 shadow-sm"
-                                >
-                                    <span className="flex items-center justify-center gap-3">
-                                        <span className="text-left leading-tight">
-                                            <span className="block text-[15px] font-medium tracking-[0.14em]">收藏推薦</span>
-                                            <span className="block mt-1 text-[10px] tracking-[0.22em] uppercase text-gray-500">Art Advisor</span>
-                                        </span>
-                                        <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+                                <Link to="/advisor" className="peiru-hero-cta peiru-hero-cta-solid group">
+                                    <span className="peiru-hero-cta-copy">
+                                        <span className="peiru-hero-cta-zh">收藏推薦</span>
+                                        <span className="peiru-hero-cta-en">ART ADVISOR</span>
                                     </span>
+                                    <span className="peiru-hero-cta-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                                 </Link>
                             </div>
                         </div>
+                        <div className="peiru-hero-bottom"><span>PEIRU HUANG — ARTIST PORTFOLIO</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
                     </div>
                 </div>
 
@@ -1698,7 +1796,7 @@ const App = () => {
         <div className="flex flex-col min-h-screen">
             <Navigation />
             {/* 修正點：pt-[120px] 確保手機端內容避開導覽列，md:pt-24 為桌機版 */}
-            <div className="flex-grow pt-[120px] md:pt-24"> 
+            <div className="flex-grow pt-[72px] lg:pt-24"> 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/gallery" element={<GalleryPage />} />
