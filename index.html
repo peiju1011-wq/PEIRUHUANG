@@ -1491,18 +1491,18 @@ const ArtAdvisorPage = () => {
   const [hasSearched, setHasSearched] = useState(false);
 
   const advisorWorks = [
-    { id:"1", title:"方框上的水紋-1", img:"work/2024w/0141x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"] },
-    { id:"4", title:"方框上的水紋-4", img:"work/2024w/0441x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"] },
-    { id:"5", title:"方框上的水紋-5", img:"work/2024w/0541x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","soft"], rooms:["study","bedroom"] },
-    { id:"6", title:"方框上的水紋-6", img:"work/2024w/0641x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["textural","minimal","structured"], rooms:["study","living"] },
-    { id:"7", title:"方框上的水紋-7", img:"work/2024w/07445x345x5cm2024.png", size:"44.5×34.5×5 cm", width:44.5, moods:["textural","soft","quiet"], rooms:["bedroom","study","living"] },
-    { id:"11", title:"方框上的水紋-11", img:"work/2024w/11605x455x2cm2024.png", size:"60.5×45.5×2 cm", width:60.5, moods:["textural","structured","quiet"], rooms:["living","office","study"] },
-    { id:"101", title:"夜光譜曲 No.1", img:"work/2024w/01130x97cm,2017.jpg", size:"130×97 cm", width:130, moods:["luminous","urban","quiet"], rooms:["living","office","dining"] },
-    { id:"102", title:"夜光譜曲 No.2", img:"work/2024w/0491x92.5cm,2016.jpg", size:"91×72.5 cm", width:91, moods:["urban","dynamic","luminous"], rooms:["living","office","dining"] },
-    { id:"103", title:"夜光譜曲 No.3", img:"work/2024w/01166x122cm,2018.jpg", size:"166×122 cm", width:166, moods:["quiet","luminous","expansive"], rooms:["living","office","lobby"] },
-    { id:"104", title:"夜光譜曲 No.4", img:"work/2024w/05146x112cm,2017.jpg", size:"146×112 cm", width:146, moods:["urban","structured","luminous"], rooms:["living","office","lobby"] },
-    { id:"105", title:"夜光譜曲 No.5", img:"work/2024w/07240x103cm,2014.jpg", size:"240×103 cm", width:240, moods:["expansive","quiet","luminous"], rooms:["lobby","office","living"] },
-    { id:"106", title:"夜光譜曲 No.6", img:"work/2024w/05,41x24cm,2014.jpg", size:"41×24 cm", width:41, moods:["quiet","nature","luminous"], rooms:["bedroom","study","living"] }
+    { id:"1", title:"方框上的水紋-1", img:"work/2024w/0141x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"], price: 24000, priceSource: "2024 展覽計價規則：6F × NT$4,000（試算）" },
+    { id:"4", title:"方框上的水紋-4", img:"work/2024w/0441x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","minimal"], rooms:["study","bedroom","living"], price: 24000, priceSource: "2024 展覽計價規則：6F × NT$4,000（試算）" },
+    { id:"5", title:"方框上的水紋-5", img:"work/2024w/0541x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["quiet","textural","soft"], rooms:["study","bedroom"], price: 24000, priceSource: "2024 展覽計價規則：6F × NT$4,000（試算）" },
+    { id:"6", title:"方框上的水紋-6", img:"work/2024w/0641x32x2cm2024.png", size:"41×32×2 cm", width:41, moods:["textural","minimal","structured"], rooms:["study","living"], price: 24000, priceSource: "2024 展覽計價規則：6F × NT$4,000（試算）" },
+    { id:"7", title:"方框上的水紋-7", img:"work/2024w/07445x345x5cm2024.png", size:"44.5×34.5×5 cm", width:44.5, moods:["textural","soft","quiet"], rooms:["bedroom","study","living"], price: null, priceSource: "2024 作品清單未註明畫號；請洽詢" },
+    { id:"11", title:"方框上的水紋-11", img:"work/2024w/11605x455x2cm2024.png", size:"60.5×45.5×2 cm", width:60.5, moods:["textural","structured","quiet"], rooms:["living","office","study"], price: 33600, priceSource: "2024 展覽計價規則：12F × NT$2,800（試算）" },
+    { id:"101", title:"夜光譜曲 No.1", img:"work/2024w/01130x97cm,2017.jpg", size:"130×97 cm", width:130, moods:["luminous","urban","quiet"], rooms:["living","office","dining"], price: 156000, priceSource: "早期作品清單定價（夜晚的燈座故事 01，130×97 cm，2017）" },
+    { id:"102", title:"夜光譜曲 No.2", img:"work/2024w/0491x92.5cm,2016.jpg", size:"91×72.5 cm", width:91, moods:["urban","dynamic","luminous"], rooms:["living","office","dining"], price: 84000, priceSource: "早期作品清單定價（夜晚的燈座故事 04，91×72.5 cm，2016）" },
+    { id:"103", title:"夜光譜曲 No.3", img:"work/2024w/01166x122cm,2018.jpg", size:"166×122 cm", width:166, moods:["quiet","luminous","expansive"], rooms:["living","office","lobby"], price: 263000, priceSource: "早期作品清單定價（亮、中、暗 01，166×122 cm，2018）" },
+    { id:"104", title:"夜光譜曲 No.4", img:"work/2024w/05146x112cm,2017.jpg", size:"146×112 cm", width:146, moods:["urban","structured","luminous"], rooms:["living","office","lobby"], price: 208000, priceSource: "早期作品清單定價（夜晚的燈座故事 05，146×112 cm，2017）" },
+    { id:"105", title:"夜光譜曲 No.5", img:"work/2024w/07240x103cm,2014.jpg", size:"240×103 cm", width:240, moods:["expansive","quiet","luminous"], rooms:["lobby","office","living"], price: 322000, priceSource: "早期作品清單定價（這是為你開的一扇窗 07，240×103 cm，2014）" },
+    { id:"106", title:"夜光譜曲 No.6", img:"work/2024w/05,41x24cm,2014.jpg", size:"41×24 cm", width:41, moods:["quiet","nature","luminous"], rooms:["bedroom","study","living"], price: 13700, priceSource: "早期作品清單定價（這是為你開的一扇窗 05，41×24 cm，2014）" }
   ];
 
   const scaleRange = {
@@ -1512,10 +1512,28 @@ const ArtAdvisorPage = () => {
     statement: [150, 999]
   };
 
+  // Historical artwork-list prices and estimates from the 2024 exhibition's
+  // published F-size pricing. These are reference amounts, not live quotations.
+  // An unpriced work is excluded ONLY when a numeric budget was selected.
+  const actualPriceRanges = {
+    under30: [0, 30000],
+    "30-80": [30000, 80000],
+    "80-150": [80000, 150000],
+    "150plus": [150000, Infinity]
+  };
+
   const recommend = (e) => {
     e && e.preventDefault();
     const [minW, maxW] = scaleRange[scale];
-    const scored = advisorWorks.map((work) => {
+    const selectedPriceRange = actualPriceRanges[budget];
+    const matchingWorks = selectedPriceRange
+      ? advisorWorks.filter(work =>
+          typeof work.price === "number" &&
+          work.price >= selectedPriceRange[0] &&
+          work.price < selectedPriceRange[1]
+        )
+      : advisorWorks;
+    const scored = matchingWorks.map((work) => {
       let score = 0;
       if (work.rooms.includes(room)) score += 4;
       if (work.moods.includes(mood)) score += 5;
@@ -1572,7 +1590,7 @@ const ArtAdvisorPage = () => {
               <select value={budget} onChange={e=>setBudget(e.target.value)} className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-background-dark dark:text-white">
                 <option value="prefer-private">希望私下提供</option><option value="under30">NT$30,000 以下</option><option value="30-80">NT$30,000–80,000</option><option value="80-150">NT$80,000–150,000</option><option value="150plus">NT$150,000 以上</option><option value="open">預算彈性</option>
               </select>
-              <p className="mt-2 text-[11px] leading-relaxed text-gray-400">預算不會顯示在作品頁，也不會自動公開作品價格。</p>
+              <p className="mt-2 text-[11px] leading-relaxed text-gray-400">依作品清單定價或 2024 展覽畫號計價規則試算篩選；僅供收藏預算參考，成交價格與現況請向工作室確認。無定價的作品僅於「私下提供」或「預算彈性」顯示。</p>
             </div>
             <div>
               <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Anything else? / 其他需求</label>
@@ -1591,8 +1609,13 @@ const ArtAdvisorPage = () => {
             ) : (
               <div className="space-y-6">
                 <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6">
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed"><span className="font-semibold text-gray-900 dark:text-white">Advisor note：</span>依你選擇的「{roomLabel[room]} × {moodLabel[mood]}」與作品尺度，以下三件作品可作為第一輪觀看與收藏的起點。{note ? `你另外提到「${note}」，這段需求也會在洽詢時一起帶給工作室。` : ""}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed"><span className="font-semibold text-gray-900 dark:text-white">Advisor note：</span>依你選擇的「{roomLabel[room]} × {moodLabel[mood]}」與作品尺度，依所選收藏預算篩選後，以下{results.length}件作品可作為第一輪觀看與收藏的起點。{note ? `你另外提到「${note}」，這段需求也會在洽詢時一起帶給工作室。` : ""}</p>
                 </div>
+                {results.length === 0 && (
+                  <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-8 text-center">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">目前作品清單中沒有符合此預算區間的已定價作品，請調整收藏預算，或選擇「希望私下提供」洽詢其他作品。</p>
+                  </div>
+                )}
                 <div className="grid md:grid-cols-3 gap-5">
                   {results.map((work, index) => (
                     <article key={work.id} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm flex flex-col">
@@ -1600,7 +1623,8 @@ const ArtAdvisorPage = () => {
                       <div className="p-5 flex flex-col flex-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Recommendation {index+1}</p>
                         <h3 className="font-display text-xl text-gray-900 dark:text-white leading-tight mb-2">{work.title}</h3>
-                        <p className="text-xs text-gray-500 mb-4">{work.size} · Available · Price on request</p>
+                        <p className="text-xs text-gray-500 mb-1">{work.size} · Available · {work.price == null ? "價格洽詢" : `參考 NT$${work.price.toLocaleString("en-US")}`}</p>
+                        <p className="text-[10px] leading-relaxed text-gray-400 mb-4" title={work.priceSource}>{work.priceSource}</p>
                         <p className="text-xs leading-relaxed text-gray-500 mb-5">適合{roomLabel[room]}，並呼應你選擇的{moodLabel[mood]}、空間尺度與觀看節奏。</p>
                         <div className="mt-auto space-y-2">
                           <Link to={`/work/${work.id}`} className="block text-center border border-gray-200 dark:border-gray-700 rounded-lg py-2.5 text-[11px] tracking-widest uppercase text-gray-700 dark:text-gray-200 hover:border-primary hover:text-primary transition">View artwork</Link>
